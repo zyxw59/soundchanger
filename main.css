@@ -1,26 +1,32 @@
 .wrapper {
+  background-color: gray;
   display: table;
   height: 100%;
   width: 0;
 }
 
 .top {
+  background-color: #fee;
   height: 100%;
 }
 
 .top > form {
+  background-color: #fdd;
   width: auto;
 }
 
 .top > form > * {
+  background-color: #fcc;
   display: block;
 }
 
 .top > div {
+  background-color: #faa;
   width: 100%;
 }
 
 .content {
+  background-color: #efe;
   height: 100%;
 }
 
