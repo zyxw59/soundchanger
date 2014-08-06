@@ -2,10 +2,9 @@
 
 import cgitb
 import os
+from core import *
 
 cgitb.enable()
-
-FILE_PATH = '/mit/sashacf/Dropbox/Public/python/conlang/asc/'
 
 print('Content-Type: text/html')
 print('')
