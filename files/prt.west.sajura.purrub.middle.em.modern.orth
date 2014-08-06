@@ -1,7 +1,6 @@
 Vn   = ĩ ỹ  ɨ̃ ũ  ẽ  ø̃  ə̃ õ  ɛ̃  œ̃  ɔ̃  ã
 Vo   = i y  ɨ u  e  ø  ə o  ɛ  œ  ɔ  a
-Vops = i iw y u  e  ew ë o  aj eu aw a
-Voo  = i iw y u  ëj ew ë ëw e  ew o  a
+Voe  = i iw y u  e  ø  ë o  ɛ  œ  ɔ  a
 
 P = m p  b  ɸ v w
 T = n t  d  θ z l
@@ -24,8 +23,18 @@ Fo = p̌ ť š š̥ ǩ
 {0:Vn} > {0:Vo}n̥ / _d̥
 {0:Vn} > {0:Vo}ŋ / _g
 
-{0:Vo} > {0:Vops} / _{C}*ˈ
-{0:Vo} > {0:Voo} ! _({C}*ˈ)|w|j
+{0:Vo} > {0:Voe}
+
+e > ëj ! _{C}*ˈ
+o > ëw ! _{C}*ˈ
+ɛ > aj / _{C}*ˈ
+ɔ > aw / _{C}*ˈ
+ɛ > e
+ɔ > o
+ø > ew
+œ > eu / _{C}*ˈ
+œ > ew
+
 
 {0:Fp} > {0:Fo}
 ʁ > r / #_
