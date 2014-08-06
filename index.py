@@ -33,7 +33,7 @@ numPairs = 0;
 <div class="wrapper">
 <div class="top">
 <form id="main" action="app.py" target="app">
-<input id="word" name="word" />
+<input id="word" name="word" class="form-control"/>
 <select id="debug" name="debug">''')
 for i in range(4):
     print('<option value="' + str(i) + '">' + str(i) + '</option>')
