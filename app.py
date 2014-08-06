@@ -1,6 +1,6 @@
 #! /mit/sashacf/bin/python3.4
 
-from asc import asc
+import asc
 import cgi
 import cgitb
 from core import *
@@ -36,7 +36,7 @@ end = [v for k, v in sorted(end.items())]
 pairs = list(zip(start, end))
 print(reencode(word), pairs, debug, FILE_PATH)
 
-word, db = asc(word, pairs, debug, FILE_PATH)
+word, db = asc.asc(word, pairs, debug, FILE_PATH)
 
 print('<pre>')
 print(reencode(word))
