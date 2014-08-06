@@ -27,7 +27,7 @@ function insert(value) {
   if (word.selectionStart || word.selectionStart == '0') {
     var s = word.selectionStart;
     var e = word.selectionEnd;
-    word.value = word.value.substring(0, startPos) + value +  word.value.substring(endPos, word.value.length);
+    word.value = word.value.substring(0, s) + value +  word.value.substring(e, word.value.length);
   } else {
     word.value += value;
   }
