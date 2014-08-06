@@ -9,7 +9,7 @@ cgitb.enable()
 print('Content-Type: text/html')
 print('')
 
-files = sorted([''] + os.listdir(FILE_PATH + 'files/'))
+files = sorted([''] + os.listdir(FILE_PATH + '/files/'))
 fs = ['.' * f.count('.') + ('.' + f).rsplit('.', 1)[1] for f in files]
 
 chars = ['á', 'ɓ', 'β', 'ɗ', 'd͜ʑ', 'đ', 'é', 'ɛ', 'ɜ', 'ɘ', 'ɠ', 'ɣ', 'ħ', 'ɦ',
