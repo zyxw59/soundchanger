@@ -23,6 +23,7 @@ body {
 .top > form > * {
   background-color: #fcc;
   display: block;
+  width: 100%;
 }
 
 .top > div {
