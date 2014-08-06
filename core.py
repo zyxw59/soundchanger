@@ -1,5 +1,9 @@
 #! /mit/sashacf/bin/python3.4
 
+
+import cgitb
+cgitb.enable()
+
 FILE_PATH = '/mit/sashacf/web_scripts/soundchanger'
 
 def reencode(s):
