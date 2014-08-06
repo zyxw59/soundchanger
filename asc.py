@@ -38,7 +38,7 @@ debug > 3: word at end of each rule'''
                     db += cur + ':' + word + '\n'
         else:
             raise Exception(p[1] + ' does not start with ' + p[0])
-        if showSteps == 1:
+        if debug == 1:
             db += p[1] + ':' + word + '\n'
     return word, db
 
