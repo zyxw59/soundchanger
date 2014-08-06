@@ -34,7 +34,7 @@ pairs = list(zip(start, end))
 
 word, db = asc(word, pairs, debug, FILE_PATH)
 
-print('<pre style="overflow: hidden">')
+print('<pre>')
 print(reencode(word))
 print(reencode(db))
 print('</pre>')
