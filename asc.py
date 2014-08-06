@@ -43,14 +43,3 @@ debug > 3: word at end of each rule'''
     return word, db
 
 saj = 'prt.west.sajura'
-
-
-if __name__ == '__main__':
-    print('Content-Type: text/html')
-    print('')
-    print(FILE_PATH + '/files/' + 'fluf')
-    try:
-        open(FILE_PATH + '/files/fluf')
-    except FileNotFoundError:
-        print('noooo')
-    #print(reencode(asc('tət', [['', 'fluf.harmony.pron']], pre=FILE_PATH)[0]))
