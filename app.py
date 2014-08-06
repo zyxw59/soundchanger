@@ -39,6 +39,7 @@ print(reencode(word), pairs)
 word, db = asc(word, pairs, debug, FILE_PATH)
 try:
     f = open(FILE_PATH + '/files/' + pairs[0][1], encoding='utf-8')
+    print(FILE_PATH + '/files/' + pairs[0][1])
     print(reencode(f.read()))
 except Exception as e:
     print(e.args)
