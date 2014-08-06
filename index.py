@@ -26,6 +26,7 @@ fs = [\'''' + '\', \''.join(fs) + '''\'];
 numFiles = files.length;
 numPairs = 0;
 </script>
+<link href="main.css" />
 <script src="main.js" ></script>
 </head>
 <body>
