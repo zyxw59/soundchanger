@@ -1,14 +1,25 @@
 #! /mit/sashacf/bin/python3.4
 
 
+import sys
 import cgitb
 cgitb.enable()
+
 import asc
 
 FILE_PATH = '/mit/sashacf/web_scripts/soundchanger'
 
-def reencode(s):
-    return s.encode('ascii', 'xmlcharrefreplace').decode()
+class Reencoder():
+
+    def write(self, *a):
+        return sys.__stdout__.write(*(reencode(s) for s in a))
+
+    def flush(self):
+        return sys.__stdout__.flush()
+
+sys.stdout = Reencoder()
+
+reencode = lambda s: s.encode('ascii', 'xmlcharrefreplace').decode()
 
 if __name__ == '__main__':
     print('Content-Type: text/html')
