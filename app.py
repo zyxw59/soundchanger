@@ -37,6 +37,7 @@ pairs = list(zip(start, end))
 print(reencode(word), pairs)
 
 word, db = asc(word, pairs, debug, FILE_PATH)
+open(pairs[0][0], encoding='utf-8')
 
 print('<pre>')
 print(reencode(word))
