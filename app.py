@@ -34,6 +34,7 @@ start = [v for k, v in sorted(start.items())]
 end = [v for k, v in sorted(end.items())]
 
 pairs = list(zip(start, end))
+print(pairs)
 
 word, db = asc(word, pairs, debug, FILE_PATH)
 
