@@ -35,11 +35,11 @@ debug = 3: word at end of each rule'''
                 if debug > 2:
                     db += steps
                 if debug > 1:
-                    db += cur + ':' + word + '\n'
+                    db += cur + ': ' + word + '\n'
         else:
             raise Exception(p[1] + ' does not start with ' + p[0])
         if debug == 1:
-            db += p[1] + ':' + word + '\n'
+            db += p[1] + ': ' + word + '\n'
     return word, db
 
 saj = 'prt.west.sajura'
