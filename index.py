@@ -54,6 +54,6 @@ print('''</select>
 </form>
 <input type="button" value="+" onclick="addMenu()" />
 <input type="button" value="-" onclick="removeMenu()" />
-<div><iframe name="app"></iframe></div>
+<iframe name="app" seamless></iframe>
 </body>
 </html>''')
