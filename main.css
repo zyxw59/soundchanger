@@ -19,6 +19,5 @@
 iframe {
   border: none;
   display: table-row;  /* height is dynamic, and will expand... */
-  height: 100%;        /* ...as content is added (won't scroll) */
   width: 100%;
 }
