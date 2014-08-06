@@ -30,7 +30,7 @@ numPairs = 0;
 <script src="main.js" ></script>
 </head>
 <body>
-<div class="wrapper">
+<div class="container">
 <div class="top">
 <form id="main" action="app.py" target="app">
 <input id="word" name="word" class="form-control"/>
