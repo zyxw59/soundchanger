@@ -58,7 +58,7 @@ print('''</select>
 <input type="button" value="-" onclick="removeMenu()" />
 </div>
 <div class="content">
-<iframe name="app" seamless scrolling="no"></iframe>
+<iframe name="app" seamless></iframe>
 </div>
 </div>
 </body>
