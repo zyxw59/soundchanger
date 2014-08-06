@@ -31,7 +31,7 @@ def classHook(dct):
 def loadFile(fileName):
     '''Returns specified file as a Dictionary or Entry if it is a json file,
     or a list of lines otherwise'''
-    with open(fileName) as f:
+    with open(fileName, encoding='utf-8') as f:
         if fileName.split('.')[-1] in ['json', 'js']:
             return json.load(f, object_hook=classHook)
         else:
