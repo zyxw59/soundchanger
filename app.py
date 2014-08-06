@@ -34,11 +34,10 @@ start = [v for k, v in sorted(start.items())]
 end = [v for k, v in sorted(end.items())]
 
 pairs = list(zip(start, end))
-print(reencode(word), pairs, debug, FILE_PATH)
 
 word, db = asc.asc(word, pairs, debug, FILE_PATH)
 
 print('<pre>')
-print(reencode(word))
-print(reencode(db))
+print(word)
+print(db)
 print('</pre>')
