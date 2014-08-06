@@ -1,0 +1,18 @@
+Vn = ĩ ỹ ɨ̃ ũ ẽ ø̃ ə̃ õ ɛ̃ œ̃ ɔ̃ ã
+Vo = i y ɨ u e ø ə o ɛ œ ɔ a
+
+Vops = i iw y e  ew ë o  aj eu aw a
+Voo  = i iw y ëj ew ë ëw e  ew o  a
+
+J = t͜ɕ d͜ʑ ɕ ʑ
+R = ʈ͡ʂ ɖ͡ʐ ʂ ʐ
+O = t̥ d̥ s̥ z̥
+
+{0:J} > {0:O}
+{0:R} > {0:O}
+
+
+{0:Vn} > {0:Vo}m / _b
+{0:Vn} > {0:Vo}n / _d|#
+{0:Vn} > {0:Vo}n̥ / _d̥
+{0:Vn} > {0:Vo}ŋ / _g
