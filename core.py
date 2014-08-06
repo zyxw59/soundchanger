@@ -3,6 +3,7 @@
 
 import cgitb
 cgitb.enable()
+import asc
 
 FILE_PATH = '/mit/sashacf/web_scripts/soundchanger'
 
@@ -12,7 +13,4 @@ def reencode(s):
 if __name__ == '__main__':
     print('Content-Type: text/html')
     print('')
-    print(FILE_PATH + '/files/' + 'fluf')
-    f = open(FILE_PATH + '/files/fluf', encoding='utf-8')
-    r = f.read()
-    print(reencode(r))
+    print(reencode(asc.asc('sˈezuza', [['prt.west.sajura', 'prt.west.sajura.purrub.middle.em.modern.orth']])))
