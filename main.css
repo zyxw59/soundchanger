@@ -4,12 +4,12 @@
   width: 100%;
 }
 
-.header {
+.top {
   display: table-row;
   width: 100%;
 }
 
-.header form * {
+.top > form > * {
   display: block;
 }
 
