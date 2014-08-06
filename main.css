@@ -4,6 +4,10 @@
   width: 0;
 }
 
+.top {
+  height: 100%;
+}
+
 .top > form {
   width: auto;
 }
