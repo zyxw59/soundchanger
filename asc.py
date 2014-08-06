@@ -53,4 +53,4 @@ if __name__ == '__main__':
         open(FILE_PATH + '/files/fluf')
     except FileNotFoundError:
         print('noooo')
-    print(reencode(asc('tət', [['', 'fluf.harmony.pron']], pre=FILE_PATH)[0]))
+    #print(reencode(asc('tət', [['', 'fluf.harmony.pron']], pre=FILE_PATH)[0]))
