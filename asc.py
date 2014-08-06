@@ -1,6 +1,7 @@
 #! /mit/sashacf/bin/python3.4
 
 from conlang.conlangApp import *
+from core import *
 
 ar = soundChanger.applyRules
 
@@ -42,3 +43,7 @@ debug > 3: word at end of each rule'''
     return word, db
 
 saj = 'prt.west.sajura'
+
+
+if __name__ == '__main__':
+    print(reencode(asc('tət', [['', 'fluf.harmony.pron']], pre=FILE_PATH)))
