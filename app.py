@@ -7,7 +7,7 @@ from core import *
 
 cgitb.enable()
 
-print('Content-Type: text/plain')
+print('Content-Type: text/html')
 print('')
 
 form = cgi.FieldStorage(encoding='utf-8')
