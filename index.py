@@ -12,7 +12,7 @@ print('')
 files = sorted([' '] + os.listdir(FILE_PATH + '/files/'))
 fs = ['.' * f.count('.') + ('.' + f).rsplit('.', 1)[1] for f in files]
 
-with open('chars.txt') as cf:
+with open('chars.txt', encoding='utf-8') as cf:
     chars = [l.split(' ') for l in cf.read().split('\n')]
 
 #chars = ['á', 'ɓ', 'β', 'ɗ', 'd͜ʑ', 'đ', 'é', 'ɛ', 'ɜ', 'ɘ', 'ə', 'ɠ', 'ɣ', 'ħ', 'ɦ',
