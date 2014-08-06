@@ -13,4 +13,4 @@ def reencode(s):
 if __name__ == '__main__':
     print('Content-Type: text/html')
     print('')
-    print(reencode(asc.asc('sˈezuza sˈewa', [('prt.west.sajura', 'prt.west.sajura.purrub.middle.em.modern.orth')])[0]))
+    print(reencode(asc.asc('sˈezuza sˈewa', [('prt.west.sajura', 'prt.west.sajura.purrub.middle.em.modern.orth')], 0, '/mit/sashacf/web_scripts/soundchanger')[0]))
