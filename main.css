@@ -1,8 +1,12 @@
+body {
+  background-color: #eee;
+  height: 100%;
+}
+
 .wrapper {
-  background-color: gray;
+  background-color: #ddd;
   display: table;
   height: 100%;
-  width: 0;
 }
 
 .top {
