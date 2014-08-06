@@ -41,7 +41,7 @@ try:
     f = open(pairs[0][1], encoding='utf-8')
     print(reencode(f.read()))
 except Exception as e:
-    print(e)
+    print(e.args)
 
 print('<pre>')
 print(reencode(word))
