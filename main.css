@@ -1,47 +1,41 @@
-body {
+body, html {
+  font-size: 16px;
   height: 100%;
-  width: 320px;
+  margin: 0px;
+  overflow: hidden;
+  padding: 0px;
+  width: 100%;
 }
 
-.wrapper {
-  background-color: #ddd;
+/*.top {
+  position: fixed;
+  top: 0px;
+}*/
+
+div {
+  margin: 0px;
+  padding: 0px;
+}
+
+.container {
   display: table;
   height: 100%;
 }
 
 .top {
-  background-color: #fee;
-  height: 100%;
-}
-
-.top > form {
-  background-color: #fdd;
-  width: 100%;
-}
-
-.top > form > * {
-  background-color: #fcc;
-  display: block;
-  padding: 1em;
-  width: 100%;
-}
-
-.top > div {
-  background-color: #faa;
-  width: 100%;
-}
-
-#pairs select {
-  width: 50%;
+  display: table-row;
 }
 
 .content {
-  background-color: #efe;
+  display: table-row;
   height: 100%;
+  width: 100%;
 }
 
 iframe {
-  border: none;
   height: 100%;
+  margin: 0;
+  padding: 0;
+  bottom: 0px;
   width: 100%;
 }

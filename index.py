@@ -29,7 +29,8 @@ fs = [\'''' + '\', \''.join(fs) + '''\'];
 numFiles = files.length;
 numPairs = 0;
 </script>
-<link href="min.css" rel="stylesheet" />
+<link rel="stylesheet" media="screen and (min-device-width: 800px)" href="main.css" />
+<link rel="stylesheet" media="screen and (max-device-width: 800px)" href="phone.css" />
 <script src="main.js" ></script>
 </head>
 <body>
