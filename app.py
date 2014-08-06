@@ -37,7 +37,10 @@ pairs = list(zip(start, end))
 print(reencode(word), pairs)
 
 word, db = asc(word, pairs, debug, FILE_PATH)
-f = open(pairs[0][1], encoding='utf-8')
+try:
+    f = open(pairs[0][1], encoding='utf-8')
+except Exception as e:
+    print(e)
 print(reencode(f.read()))
 
 print('<pre>')
