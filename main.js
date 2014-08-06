@@ -31,4 +31,5 @@ function insert(value) {
   } else {
     word.value += value;
   }
+  word.focus();
 }
