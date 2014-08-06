@@ -17,12 +17,11 @@
 }
 
 .content {
-  display: table-row;  /* height is dynamic, and will expand... */
   height: 100%;
 }
 
 iframe {
   border: none;
-  height: 100%;        /* ...as content is added (won't scroll) */
+  height: 100%;
   width: 100%;
 }
