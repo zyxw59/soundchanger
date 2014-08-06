@@ -48,6 +48,8 @@ saj = 'prt.west.sajura'
 if __name__ == '__main__':
     print('Content-Type: text/html')
     print('')
-    f = lf('fluf.harmony.pron', FILE_PATH)
-    print(f)
+    print(FILE_PATH + '/files/' + 'fluf')
+    with open(FILE_PATH + '/files/' + 'fluf') as f:
+        for l in f.read():
+            print l
     print(reencode(asc('tət', [['', 'fluf.harmony.pron']], pre=FILE_PATH)[0]))
