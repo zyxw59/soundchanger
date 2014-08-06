@@ -31,6 +31,10 @@ body {
   width: 100%;
 }
 
+#pairs select {
+  width: 50%;
+}
+
 .content {
   background-color: #efe;
   height: 100%;
