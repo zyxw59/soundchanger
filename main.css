@@ -9,6 +9,10 @@
   width: 100%;
 }
 
+.header * {
+  display: block;
+}
+
 iframe {
   border: none;
   display: table-row;  /* height is dynamic, and will expand... */
