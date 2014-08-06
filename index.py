@@ -62,7 +62,9 @@ print('''</select>
 <input type="button" value="+" onclick="addMenu()" />
 <input type="button" value="-" onclick="removeMenu()" />
 </div>
+<div class="content">
 <iframe name="app" seamless></iframe>
+</div>
 </div>
 </body>
 </html>''')
