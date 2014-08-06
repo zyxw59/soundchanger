@@ -36,13 +36,6 @@ end = [v for k, v in sorted(end.items())]
 pairs = list(zip(start, end))
 print(reencode(word), pairs)
 
-try:
-    print(FILE_PATH + '/files/' + pairs[0][1])
-    f = open(FILE_PATH + '/files/' + pairs[0][1], encoding='utf-8')
-    print(reencode(f.read()))
-except Exception as e:
-    print(e.args)
-
 word, db = asc(word, pairs, debug, FILE_PATH)
 
 print('<pre>')
