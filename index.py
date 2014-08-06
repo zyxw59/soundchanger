@@ -45,10 +45,10 @@ print('''</select>
 </form>
 <div>''')
 for l in chars:
-    print('<select>')
+    print('<select onblur="insert(this.value)">')
     for c in l:
         r = reencode(c)
-        print('<option onclick="insert(\'' + r + '\')">' + r + '</option>')
+        print('<option value="' + r + '"' + r + '</option>')
     print('</select>')
 print('''</div>
 <form id="pairs">\
