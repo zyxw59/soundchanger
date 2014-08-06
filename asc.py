@@ -1,4 +1,4 @@
-! /mit/sashacf/bin/python3.4
+#! /mit/sashacf/bin/python3.4
 
 from conlang.conlangApp import *
 from core import *
