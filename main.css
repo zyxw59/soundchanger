@@ -7,6 +7,6 @@ iframe {
   border: none;
   display: block;
   height: 100%;
-  overflow: hidden;
+  overflow: visible;
   width: 100%;
 }
