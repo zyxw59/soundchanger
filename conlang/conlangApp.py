@@ -66,14 +66,15 @@ def addEntry(d, fields=('word', 'pron', 'pos', 'cl', 'subcl', 'de')):
 
 
 def applyRules(d, rc, field='pron', field2=None):
-    '''Returns a copy of d with field2 replaced by field with the list of rules
-    applied. field defaults to pron, and field2 defaults to whatever field is'''
+    '''\
+Returns a copy of d with field2 replaced by field with the list of rules
+applied. field defaults to pron, and field2 defaults to whatever field is'''
     out = dictionary.Dictionary()
     for e in d:
         o = dictionary.Entry(e)
         if field2 is None:
             field2 = field
-        o[field2] = soundChanger.applyRules(o[field], rc)
+        o[field2] = soundChanger.applyRules(o[field], rc)[0]
         out.append(o)
     return out
 
@@ -82,5 +83,5 @@ def sortFields(d, fields):
     for i in range(len(d)):
         e = dictionary.Entry()
         for f in fields:
-                e[f] = d[i][f]
+            e[f] = d[i][f]
         d[i] = e

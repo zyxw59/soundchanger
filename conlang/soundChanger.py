@@ -150,22 +150,27 @@ def applyRule(word, rule, cats):
     return word
 
 
-def applyRules(word, soundChanges, showSteps=False):
+def applyRules(word, soundChanges):
     cats = {}
+    debug = ''
     try:
-        if showSteps:
-            print('##NEW FILE##')
         for l in soundChanges:
             rc = parseSoundChange(l, cats)
             if 'catName' in rc:
                 cats[rc['catName']] = rc['category']
-            elif word is not None:
+            else:
                 word = applyRule(word, rc, cats)
-                if showSteps:
-                    print(l, word)
+                debug += l + ' ' + word + '\n'
     except TypeError:
         for w in range(len(word)):
-            word[w] = applyRules(word[w], soundChanges, showSteps)
-    if word is None:
-        return cats
-    return word
+            word[w] = applyRules(word[w], soundChanges)
+    return word, debug
+
+
+def getCats(soundChanges):
+    cats = {}
+    for l in soundChanges:
+        rc = parseSoundChange(l, cats)
+        if 'catName' in rc:
+            cats[rc['catName']] = rc['category']
+    return cats
