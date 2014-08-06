@@ -15,6 +15,6 @@ if __name__ == '__main__':
     print(FILE_PATH + '/files/' + 'fluf')
     try:
         f = open(FILE_PATH + '/files/fluf')
-        print(f.read())
+        print(reencode(f.read()))
     except Exception as e:
         print('noooo', e)
