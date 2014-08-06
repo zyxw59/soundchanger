@@ -31,4 +31,4 @@ end = [v for k, v in sorted(end.items())]
 
 pairs = list(zip(start, end))
 
-print(reencode(asc(word, pairs, pre=FILE_PATH))[0])
+print(reencode(asc(word, pairs, pre=FILE_PATH)[0]))
