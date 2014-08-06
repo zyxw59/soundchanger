@@ -35,4 +35,4 @@ pairs = list(zip(start, end))
 word, db = asc(word, pairs, debug, FILE_PATH)
 
 print(reencode(word))
-#print(reencode(db))
+print(reencode(db))
