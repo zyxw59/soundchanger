@@ -31,6 +31,10 @@ numPairs = 0;
 <body>
 <form id="main" action="app.py" target="app">
 <input id="word" name="word" />
+<select id="debug" name="debug">''')
+for i in range(4):
+    print('<option value="' + str(i) + '">' + str(i) + '</option>')
+print('''</select>
 <input type="submit" value="apply" />
 </form>
 <form id="pairs">\

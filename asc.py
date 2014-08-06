@@ -23,8 +23,8 @@ def asc(word, pairs, debug=0, pre='.'):
 pairs format: [['a', 'a.b'], ['b', 'b.c']]
 debug = 0: don't show anything
 debug = 1: word at end of each pair
-debug > 2: word at end of each file
-debug > 3: word at end of each rule'''
+debug = 2: word at end of each file
+debug = 3: word at end of each rule'''
     db = ''
     for p in pairs:
         if p[1].startswith(p[0]):
