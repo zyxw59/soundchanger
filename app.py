@@ -5,7 +5,7 @@ import cgi
 import cgitb
 from core import *
 
-cgitb.enable()
+cgitb.enable(display=0, logdir=FILE_PATH + '/logs/')
 
 print('Content-Type: text/html')
 print('')
