@@ -6,7 +6,6 @@
 
 .top {
   display: table-row;
-  width: 100%;
 }
 
 .top > form > * {
