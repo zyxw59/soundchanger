@@ -13,9 +13,6 @@ if __name__ == '__main__':
     print('Content-Type: text/html')
     print('')
     print(FILE_PATH + '/files/' + 'fluf')
-    try:
-        f = open(FILE_PATH + '/files/fluf')
-        r = f.read()
-        print(reencode(f))
-    except Exception as e:
-        print('noooo', e)
+    f = open(FILE_PATH + '/files/fluf')
+    r = f.read()
+    print(reencode(f))
