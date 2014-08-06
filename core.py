@@ -1,4 +1,4 @@
-#! /usr/bin/env python3.4  # lint:ok
+#! /mit/sashacf/bin/python3.4
 
 FILE_PATH = '/mit/sashacf/web_scripts/soundchanger'
 
