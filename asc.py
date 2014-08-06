@@ -17,7 +17,7 @@ linearly connected.'''
         start += '.'
     return start + end[len(start):].split('.')[0]
 
-def asc2(word, pairs, showSteps=0, pre='.'):
+def asc(word, pairs, showSteps=0, pre='.'):
     '''\
 pairs format: [['a', 'a.b'], ['b', 'b.c']]
 showSteps = 0: don't show anything
