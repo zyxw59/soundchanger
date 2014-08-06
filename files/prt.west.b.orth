@@ -1,0 +1,39 @@
+Jp = ɲ t͜s d͜z ʃ ʒ
+Jo = n̥ ǩ ǧ s̥ z̥
+Fp = ff xx f x
+Fo = ww̌ ɣɣ̌ w̌ ɣ̌
+
+Vup = i ɨ u e ə o ɛ a ɔ
+Vuo = i y u e ə o ɛ a ɔ
+Vsp = ˈi ˈɨ ˈu ˈe ˈə ˈo ˈɛ ˈa ˈɔ
+Vso = í ý ú é ə́ ó ɛ́ á ɔ́
+Vlp = ˈə̯i ˈə̯ɨ ˈə̯u ˈeə̯ ˈəː ˈoə̯ ˈea̯ ˈaː ˈoa̯
+Vlo = ì ỳ ù è ə̀ ò ê â ô
+Vnp = ẽ ə̃ õ
+Vno = en̥ əŋ om
+Vnom = em əm om
+Vnon = en ən on
+Vnon̥ = en̥ ən̥ on̥
+Vnoŋ = eŋ əŋ oŋ
+
+M = m p b f v β w
+N = n t d t͜s d͜z s z ð ɾ l
+N̥ = ɲ ʃ ʒ j
+Ŋ = ŋ k g x ɣ
+
+{0:Vnp} > {0:Vnoŋ} / _{Ŋ}
+{0:Vnp} > {0:Vnon̥} / _{N̥}
+{0:Vnp} > {0:Vnon} / _{N}
+{0:Vnp} > {0:Vnom} / _{M}
+{0:Vnp} > {0:Vno}
+
+{0:Vlp} > {0:Vlo}
+{0:Vsp} > {0:Vso}
+{0:Vup} > {0:Vuo}
+
+{0:Jp} > {0:Jo}
+{0:Fp} > {0:Fo}
+
+r > rr
+ɾ > r
+ʔ > 0

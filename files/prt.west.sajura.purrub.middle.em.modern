@@ -1,0 +1,24 @@
+Vl  = o ɔ e ɛ ə a
+Vh  = u o i e ɯ ə
+Vhn = ũ õ ĩ ẽ ɯ̃ ə̃
+Vf  = i e ɛ
+Vfn = ĩ ẽ ɛ̃
+Vb  = u o ɔ
+Vbn = ũ õ ɔ̃
+Vr  = y ø œ
+Vrn = ỹ ø̃ œ̃
+Vc  = ɯ ə a
+
+{0:Vl}ɰ̃ > {0:Vhn}
+{0:Vl}ɰ > {0:Vh}
+{0:Vc}j̃ > {0:Vfn}
+{0:Vc}j > {0:Vf}
+{0:Vc}w̃ > {0:Vbn}
+{0:Vc}w > {0:Vb}
+{0:Vf}w̃ > {0:Vrn}
+{0:Vf}w > {0:Vr}
+{0:Vb}j̃ > {0:Vrn}
+{0:Vb}j > {0:Vr}
+
+x > χ
+ɣ > ʁ

@@ -1,0 +1,1 @@
+{"className": "Dictionary", "entries": [{"className": "Entry", "fields": {"en": "cat", "word": "cada", "cl": "a", "pos": "noun", "pron": "ka\u00f0\u0259", "subcl": ""}}, {"className": "Entry", "fields": {"en": "rock", "word": "d\u00eda", "cl": "i", "pos": "noun", "pron": "\u00f0i\u0259", "subcl": ""}}]}

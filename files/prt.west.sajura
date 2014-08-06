@@ -1,0 +1,44 @@
+Vc = ɨ ə a
+Vj = i e ɛ æ
+Vw = u o ɔ ɒ
+V = {Vc} {Vj} {Vw}
+N = m n ŋ
+F = p t k ʔ
+B = β ð ɣ
+M = b d g
+S = s h
+Z = z ɦ
+R = ɾ r j w l
+P = m p β b
+T = n t ð d s z ɾ r l
+K = ŋ k ɣ g
+H = ʔ h ɦ
+C = {N} {F} {B} {M} {S} {Z} {R}
+
+CV = 0 0 0 j j j j w w w w
+{0:V} > {0:CV} / ˈ{V}ː?{C}+_
+ː > 0 / _w|j
+ː > 0 / _{C}({C}|#)
+
+
+{H} > 0
+
+Tj = ɲ t͜ɕ j d͜ʑ ɕ ʑ ɾʲ rʲ ʎ
+{0:T}j > {0:Tj}
+
+C = {C} {Tj}
+
+ww > u / {C}|#_{C}|#
+jj > i / {C}|#_{C}|#
+ww > w
+jj > j
+
+w > u / {C}|#_{C}|#
+j > i / {C}|#_{C}|#
+l > o / {C}|#_{C}|#
+ɾ > ə / {C}|#_{C}|#
+
+j > 0 / {Tj}_
+
+æ > a
+ɒ > ɔ

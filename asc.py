@@ -1,9 +1,5 @@
 #! /usr/bin/env python3.4  # lint:ok
 
-import sys
-sys.path.insert(0, '/home/sasha/Dropbox/Public/python/conlang')
-sys.path.insert(0, '/mit/sashacf/Dropbox/Public/python/conlang')
-
 from conlang.conlangApp import *
 
 ar = soundChanger.applyRules

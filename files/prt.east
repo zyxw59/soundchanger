@@ -1,0 +1,47 @@
+Vc = ɨ ɘ ɜ a
+Vj = i e ɛ aj
+Vw = u o ɔ aw
+Vn = ũ õ ɔ̃ aw̃
+V = {Vc} {Vj} {Vw} {Vn}
+N = m n ŋ ŋʷ
+F = p t k kʷ ʔ
+B = b d g gʷ
+M = ɓ ɗ ɠ ɠʷ
+S = s h
+Z = z
+R = r j w w̃ l
+P = m p b ɓ
+T = n t d ɗ
+K = ŋ k g ɠ
+W = ŋʷ kʷ gʷ ɠʷ
+H = ʔ h
+C = {N} {F} {B} {M} {S} {Z} {R}
+
+{0:Vc}w > {0:Vw} ! _{V}
+{0:Vc}ŋʷ > {0:Vn} ! _{V}
+{0:Vc}j > {0:Vj} ! _{V}
+{0:Vc}ŋʷ > {0:Vc}w̃ / _{V}
+ɘ > o
+ɜ > ɛ
+
+kʷ > p
+gʷ > b
+ɠʷ > ɓ
+{0:M} > {0:N}{0:B}
+M = mb nd ŋg
+C = {N} {F} {B} {M} {S} {Z} {R}
+N = m n ŋ
+{H} > 0 / {C}|#_{C}|#
+{N} > 0 / _{N} ! _ŋʷ
+{C} > 0 / _{M}
+{N} > m / _[pb]
+{N} > m / [pb]_
+{N} > n / _[td]
+{N} > n / [td]_
+{N} > ŋ / _[kg]
+{N} > ŋ / [kg]_
+ŋʷ > mw / [pb]_
+ŋʷ > nw / [td]_
+ŋʷ > ŋw / [kg]_
+ŋʷ > w / {N}_
+ŋʷ > w̃
