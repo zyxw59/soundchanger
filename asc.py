@@ -46,7 +46,5 @@ saj = 'prt.west.sajura'
 
 
 if __name__ == '__main__':
-    f = lf('fluf.harmony.pron', pre=FILE_PATH)
-    print(f)
     print(FILE_PATH)
     #print(reencode(asc('tət', [['', 'fluf.harmony.pron']], pre=FILE_PATH)[0]))
