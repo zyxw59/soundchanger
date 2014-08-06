@@ -30,6 +30,8 @@ numPairs = 0;
 <script src="main.js" ></script>
 </head>
 <body>
+<div class="wrapper">
+<div class="top">
 <form id="main" action="app.py" target="app">
 <input id="word" name="word" />
 <select id="debug" name="debug">''')
@@ -54,6 +56,10 @@ print('''</select>
 </form>
 <input type="button" value="+" onclick="addMenu()" />
 <input type="button" value="-" onclick="removeMenu()" />
+</div>
+<div class="content">
 <iframe name="app" seamless scrolling="no"></iframe>
+</div>
+</div>
 </body>
 </html>''')

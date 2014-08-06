@@ -1,12 +1,14 @@
-body {
+.wrapper {
+  display: table;
   height: 100%;
   width: 100%;
 }
 
-iframe {
-  border: none;
-  display: block;
-  height: 100%;
-  overflow: hidden;
-  width: 100%;
+.header {
+  display: table-row;
+}
+
+.content {
+  display: table-row;  /* height is dynamic, and will expand... */
+  height: 100%;        /* ...as content is added (won't scroll) */
 }
