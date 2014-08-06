@@ -21,14 +21,7 @@ linearly connected.'''
         start += '.'
     return start + end[len(start):].split('.')[0]
 
-def asc(word, start, end, showSteps=False):
-    if start == end:
-        return word
-    else:
-        return ar(asc(word, start, last(end), showSteps), lf(end), showSteps)
-
-
-def asc2(word, pairs, showSteps=0):
+def asc2(word, pairs, showSteps=0, pre='.'):
     '''\
 pairs format: [['a', 'a.b'], ['b', 'b.c']]
 showSteps = 0: don't show anything
@@ -40,7 +33,7 @@ showSteps > 3: print word at end of each rule'''
             cur, end = p
             while cur != end:
                 cur = step(cur, end)
-                word = ar(word, lf(cur), showSteps > 2)
+                word = ar(word, lf(cur, pre), showSteps > 2)
                 if showSteps > 1:
                     print(cur, ':', word)
         else:

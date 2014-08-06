@@ -1,6 +1,6 @@
 #! /mit/sashacf/bin/python3.4
 
-#from asc import asc2
+from asc import asc2
 import cgi
 import cgitb
 from core import *
@@ -14,6 +14,7 @@ form = cgi.FieldStorage(encoding='utf-8')
 
 start = {}
 end = {}
+word = form['word'].value
 
 for f in form:
     if f[0] == 's':
@@ -30,3 +31,4 @@ end = [v for k, v in sorted(end.items())]
 
 pairs = list(zip(start, end))
 
+print(reencode(asc2(word, pairs, pre=FILE_PATH)))
