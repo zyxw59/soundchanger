@@ -50,6 +50,7 @@ if __name__ == '__main__':
     print('')
     print(FILE_PATH + '/files/' + 'fluf')
     try:
-        print(reencode(asc('tət', [['', 'fluf.harmony.pron']], pre=FILE_PATH)[0]))
+        open(FILE_PATH + '/files/fluf')
     except FileNotFoundError:
         print('noooo')
+    print(reencode(asc('tət', [['', 'fluf.harmony.pron']], pre=FILE_PATH)[0]))
