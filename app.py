@@ -38,7 +38,7 @@ print(reencode(word), pairs)
 
 word, db = asc(word, pairs, debug, FILE_PATH)
 f = open(pairs[0][1], encoding='utf-8')
-print(f.read())
+print(reencode(f.read()))
 
 print('<pre>')
 print(reencode(word))
