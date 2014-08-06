@@ -1,7 +1,7 @@
 body {
   background-color: #eee;
   height: 100%;
-  width: 300px;
+  width: 320px;
 }
 
 .wrapper {
@@ -23,6 +23,7 @@ body {
 .top > form > * {
   background-color: #fcc;
   display: block;
+  padding: 1em;
   width: 100%;
 }
 
