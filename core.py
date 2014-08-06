@@ -14,7 +14,6 @@ if __name__ == '__main__':
     print('')
     print(FILE_PATH + '/files/' + 'fluf')
     try:
-        f = open(FILE_PATH + '/files/fluf')
-        print(f.read())
+        open(FILE_PATH + '/files/fluf')
     except Exception as e:
         print('noooo', type(e))
