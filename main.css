@@ -8,12 +8,9 @@
   display: table-row;
 }
 
-.content {
-  display: table-row;  /* height is dynamic, and will expand... */
-  height: 100%;        /* ...as content is added (won't scroll) */
-}
-
 iframe {
   border: none;
-  width: 100%	;
+  display: table-row;  /* height is dynamic, and will expand... */
+  height: 100%;        /* ...as content is added (won't scroll) */
+  width: 100%;
 }
