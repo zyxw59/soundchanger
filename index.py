@@ -39,11 +39,12 @@ for i in range(4):
     print('<option value="' + str(i) + '">' + str(i) + '</option>')
 print('''</select>
 <input type="submit" value="apply" />
-</form>''')
+</form>
+<div>''')
 for c in chars:
     r = reencode(c)
     print('<input type="button" value="' + r + '" onclick="insert(\'' + r + '\')" />')
-print('''
+print('''</div>
 <form id="pairs">\
 <div id="pair-0">\
 <select id="start-0" name="start-0" form="main">''')
