@@ -12,8 +12,11 @@ print('')
 files = sorted([' '] + os.listdir(FILE_PATH + '/files/'))
 fs = ['.' * f.count('.') + ('.' + f).rsplit('.', 1)[1] for f in files]
 
-chars = ['á', 'ɓ', 'β', 'ɗ', 'd͜ʑ', 'đ', 'é', 'ɛ', 'ɜ', 'ɘ', 'ə', 'ɠ', 'ɣ', 'ħ', 'ɦ',
-     'ɨ', 'ñ', 'ŋ', 'ɲ', 'ó', 'ɔ', 'ɾ', 'ɕ', 't͜ɕ', 'ŧ', 'ú', 'ʷ', 'ʑ', 'ʔ', 'ˈ']
+with open('chars.txt') as cf:
+    chars = [l.split(' ') for l in cf.read().split('\n')]
+
+#chars = ['á', 'ɓ', 'β', 'ɗ', 'd͜ʑ', 'đ', 'é', 'ɛ', 'ɜ', 'ɘ', 'ə', 'ɠ', 'ɣ', 'ħ', 'ɦ',
+     #'ɨ', 'ñ', 'ŋ', 'ɲ', 'ó', 'ɔ', 'ɾ', 'ɕ', 't͜ɕ', 'ŧ', 'ú', 'ʷ', 'ʑ', 'ʔ', 'ˈ']
 
 print('''<!DOCTYPE html>
 <html>
@@ -41,9 +44,11 @@ print('''</select>
 <input type="submit" value="apply" />
 </form>
 <div>''')
-for c in chars:
-    r = reencode(c)
-    print('<input type="button" value="' + r + '" onclick="insert(\'' + r + '\')" />')
+for l in chars:
+    print('<select>')
+    for c in l:
+        r = reencode(c)
+        print('<option onclick="insert(\'' + r + '\')">' + r + '</option>')
 print('''</div>
 <form id="pairs">\
 <div id="pair-0">\
