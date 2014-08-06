@@ -49,6 +49,7 @@ for l in chars:
     for c in l:
         r = reencode(c)
         print('<option onclick="insert(\'' + r + '\')">' + r + '</option>')
+    print('</select>')
 print('''</div>
 <form id="pairs">\
 <div id="pair-0">\
