@@ -1,4 +1,4 @@
-#! /usr/bin/env python3.4  # lint:ok
+#! /mit/sashacf/bin/python3.4
 
 from conlang.conlangApp import *
 
