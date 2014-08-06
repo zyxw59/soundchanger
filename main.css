@@ -1,6 +1,11 @@
 .wrapper {
   display: table;
   height: 100%;
+  width: 0;
+}
+
+.top > form {
+  width: auto;
 }
 
 .top > form > * {
