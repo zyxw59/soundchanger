@@ -3,6 +3,7 @@
 #from asc import asc2
 import cgi
 import cgitb
+from core import *
 
 cgitb.enable()
 
@@ -29,4 +30,3 @@ end = [v for k, v in sorted(end.items())]
 
 pairs = list(zip(start, end))
 
-print(pairs)

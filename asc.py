@@ -8,7 +8,7 @@ from conlang.conlangApp import *
 
 ar = soundChanger.applyRules
 
-lf = lambda f: loadFile('files/' + f)
+lf = lambda f, pre='.': loadFile(pre + '/files/' + f)
 
 def last(name):
     return ('.' + name).rsplit('.', 1)[0][1:]
