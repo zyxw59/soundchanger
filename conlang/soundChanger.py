@@ -2,6 +2,7 @@
 
 import regex
 from . import workers
+from .. import core
 
 # rules are stored as dicts:
 # {'from': '', 'to': '', 'before': '', 'after': '',
