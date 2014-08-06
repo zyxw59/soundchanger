@@ -31,7 +31,4 @@ end = [v for k, v in sorted(end.items())]
 
 pairs = list(zip(start, end))
 
-try:
-    asc(word, pairs, pre=FILE_PATH)[0]
-except Exception as e:
-    print(e)
+print(reencode(asc(word, pairs, pre=FILE_PATH)[0]))
