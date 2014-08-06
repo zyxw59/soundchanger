@@ -15,7 +15,7 @@ form = cgi.FieldStorage(encoding='utf-8')
 start = {}
 end = {}
 word = form['word'].value
-debug = form['debug'].value
+debug = int(form['debug'].value)
 
 for f in form:
     if f[0] == 's':
