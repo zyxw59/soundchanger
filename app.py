@@ -7,7 +7,7 @@ from core import *
 
 cgitb.enable()
 
-print('Content-Type: text/html')
+print('Content-Type: text/plain')
 print('')
 
 form = cgi.FieldStorage(encoding='utf-8')
@@ -15,6 +15,7 @@ form = cgi.FieldStorage(encoding='utf-8')
 start = {}
 end = {}
 word = form['word'].value
+debug = form['debug'].value
 
 for f in form:
     if f[0] == 's':
@@ -31,4 +32,7 @@ end = [v for k, v in sorted(end.items())]
 
 pairs = list(zip(start, end))
 
-print(reencode(asc(word, pairs, pre=FILE_PATH)[0]))
+word, db = asc(word, pairs, debug, FILE_PATH)
+
+print(reencode(word))
+print(reencode(db))
