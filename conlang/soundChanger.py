@@ -110,9 +110,8 @@ def findMatch(word, rule, cats):
     matchStr = regex.sub(r'\{(\d*):?([^}]*)}', catReplace, matchStr)
     try:
         match = list(regex.finditer(matchStr, word))
-    except regex._regex_core.error:
-        print(matchStr, word)
-        raise
+    except regex._regex_core.error as e:
+        raise type(e)(*(e.args + (matchStr, word)))
     catIndex = []
     if nc[0] and match != []:
         for m in range(len(match)):
