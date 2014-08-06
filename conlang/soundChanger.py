@@ -114,7 +114,7 @@ def findMatch(word, rule, cats):
     try:
         match = list(regex.finditer(matchStr, word))
     except regex._regex_core.error as e:
-        raise type(e)(*(reencode(a for a in e.args + (matchStr, word))))
+        raise type(e)(*(reencode(a) for a in e.args + (matchStr, word)))
     catIndex = []
     if nc[0] and match != []:
         for m in range(len(match)):
