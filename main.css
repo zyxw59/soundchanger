@@ -10,3 +10,7 @@ iframe {
   overflow: visible;
   width: 100%;
 }
+
+iframe body {
+  overflow: hidden;
+}
