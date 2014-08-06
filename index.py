@@ -42,7 +42,7 @@ print('''</select>
 </form>''')
 for c in chars:
     r = reencode(c)
-    print('<input type="button" value="' + r + '" onclick="insert' + r + '" />')
+    print('<input type="button" value="' + r + '" onclick="insert(\'' + r + '\')" />')
 print('''
 <form id="pairs">\
 <div id="pair-0">\
