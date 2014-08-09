@@ -1,0 +1,47 @@
+* {
+  font-family: Code2000, Thryomanes, Gentium,
+               Lucida Sans Unicode, Arial Unicode;
+  font-size: 20px;
+}
+a {
+  color: #063;
+}
+a:hover{
+  color: #096;
+}
+html {
+  background-color: #096;
+}
+table, th, td {
+  border: 2px solid #f60;
+  border-collapse: collapse;
+}
+table {
+  width: 50%;
+}
+td.c0, td.c2 {
+  white-space: nowrap;
+}
+td.c0.m, td.c1.m, td.s1.c0, td.s1.c1 {
+  border-right-width: 3px;
+}
+td.c1.m, td.c2.m, td.s0.c1, td.s0.c2 {
+  border-left-width: 3px;
+}
+td {
+  background-color: #fff;
+  padding: 0 .25em;
+  vertical-align: middle;
+}
+th {
+  background-color: #f93;
+  color: #063;
+}
+ul {
+  border: 2px solid #f60;
+  background-color: #f93;
+  left: 50%;
+  position: fixed;
+  list-style: disc;
+  width: 50%;
+}
