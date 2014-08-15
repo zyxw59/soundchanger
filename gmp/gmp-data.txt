@@ -369,7 +369,7 @@ any nasal|before a labial|m
 !!!Consonants
 c ɟ ç ʝ|0|t͜ɕ d͜ʑ ɕ ʑ
 cʷ ɟʷ çʷ ʝʷ||
-tˁ dˁ|0|t d
+tˤ dˤ|0|t d
 f ff|adjacent to u ɔ|ɸ
 |otherwise|disappears
 ∅ h|between two vowels or initially\before u ɔ|ɸ
@@ -383,3 +383,7 @@ f ff|adjacent to u ɔ|ɸ
 z̩|after t d s|z̩
 |otherwise|ɯz
 z̩ + a consonant||ɯzz
+!!Proto-Fluf → Proto-Bergish
+!!!Consonants
+tˤ dˤ ħ ʕ|0|t̪ d̪ θ ð
+cʷ ɟʷ çʷ ʝʷ||pʲ bʲ ɸʲ βʲ
