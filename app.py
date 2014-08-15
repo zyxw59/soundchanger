@@ -1,29 +1,24 @@
-#! /usr/bin/env python3
+#! /mit/sashacf/bin/python3
 
 import argparse
+import asc
 import cgi
 import cgitb
+from core import *
 import os
 import sys
-print('Content-Type: text/html')
-print('')
-cgitb.enable()
-
-sys.path = ['', '/mit/sashacf/lib/python34.zip', '/mit/sashacf/lib/python3.4',
-            '/mit/sashacf/lib/python3.4/plat-linux',
-            '/mit/sashacf/lib/python3.4/lib-dynload',
-            '/mit/sashacf/lib/python3.4/site-packages'] + sys.path
-
-import asc
-from core import *
 
 form = cgi.FieldStorage(encoding='utf-8')
 
 html = False
 debug = 0
+FILE_PATH = os.path.abspath(os.path.dirname(sys.argv[0]))
 
 if 'word' in form:
     sys.stdout = Reencoder(sys.stdout)
+    print('Content-Type: text/html')
+    print('')
+    cgitb.enable()
     word = form['word'].value
     startd = {}
     endd = {}
@@ -32,7 +27,6 @@ if 'word' in form:
     if 'debug' in form:
         debug = int(form['debug'].value)
     html = True
-    FILE_PATH = os.path.abspath(os.path.dirname(sys.argv[0]))
 else:
     parser = argparse.ArgumentParser()
     parser.add_argument('--word', '-w')
