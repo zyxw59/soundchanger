@@ -26,7 +26,7 @@ if 'word' in form:
     if 'debug' in form:
         debug = int(form['debug'].value)
     html = True
-    #FILE_PATH = os.path.abspath(os.path.dirname(sys.argv[0]))
+    FILE_PATH = os.path.abspath(os.path.dirname(sys.argv[0]))
 else:
     parser = argparse.ArgumentParser()
     parser.add_argument('--word', '-w')
