@@ -66,6 +66,6 @@ pairs = list(zip(start, end))
 if html:
     print('<pre>')
 print(word)
-print(db)
+#print(db)
 if html:
     print('</pre>')
