@@ -14,7 +14,7 @@ html = False
 debug = 0
 
 if 'word' in form:
-    #sys.stdout = Reencoder(sys.stdout)
+    sys.stdout = Reencoder(sys.stdout)
     print('Content-Type: text/html')
     print('')
     cgitb.enable()
@@ -61,11 +61,11 @@ end = end or [v for k, v in sorted(endd.items())]
 
 pairs = list(zip(start, end))
 
-word, db = asc.asc(word, pairs, debug, FILE_PATH)
+#word, db = asc.asc(word, pairs, debug, FILE_PATH)
 
 if html:
     print('<pre>')
 print(word)
-print(db)
+#print(db)
 if html:
     print('</pre>')
