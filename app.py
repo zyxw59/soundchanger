@@ -18,6 +18,7 @@ if 'word' in form:
     sys.stdout = Reencoder(sys.stdout)
     print('Content-Type: text/html')
     print('')
+    print(FILE_PATH)
     cgitb.enable()
     word = form['word'].value
     startd = {}
