@@ -5,6 +5,7 @@ import asc
 import cgi
 import cgitb
 from core import *
+import os
 import sys
 
 form = cgi.FieldStorage(encoding='utf-8')
@@ -13,11 +14,10 @@ html = False
 debug = 0
 
 if 'word' in form:
+    sys.stdout = Reencoder(sys.stdout)
     print('Content-Type: text/html')
     print('')
-    sys.stdout = Reencoder(sys.stdout)
     cgitb.enable()
-    import os
     word = form['word'].value
     startd = {}
     endd = {}
