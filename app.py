@@ -6,6 +6,7 @@ import argparse
 import asc
 import cgi
 import cgitb
+    cgitb.enable()
 from core import *
 import os
 import sys
@@ -19,7 +20,6 @@ print(form['word'])
 
 if 'word' in form:
     sys.stdout = Reencoder(sys.stdout)
-    cgitb.enable()
     word = form['word'].value
     startd = {}
     endd = {}
