@@ -6,7 +6,7 @@ import argparse
 import asc
 import cgi
 import cgitb
-    cgitb.enable()
+cgitb.enable()
 from core import *
 import os
 import sys
