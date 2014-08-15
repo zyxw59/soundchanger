@@ -59,7 +59,7 @@ for f in form:
 #start = start or [v for k, v in sorted(startd.items())]
 #end = end or [v for k, v in sorted(endd.items())]
 
-pairs = list(zip(start, end))
+#pairs = list(zip(start, end))
 
 #word, db = asc.asc(word, pairs, debug, FILE_PATH)
 
