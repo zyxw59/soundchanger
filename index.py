@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#! /mit/sashacf/bin/python3.4
 
 import cgitb
 import os
