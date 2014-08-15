@@ -4,14 +4,43 @@ Content-Type: text/html
 <body bgcolor="#f0f0f8"><font color="#f0f0f8" size="-5"> -->
 <body bgcolor="#f0f0f8"><font color="#f0f0f8" size="-5"> --> -->
 </font> </font> </font> </script> </object> </blockquote> </pre>
-</table> </table> </table> </table> </table> </font> </font> </font><pre>Traceback (most recent call last):
-  File "./app.py", line 61, in &lt;module>
-    word, db = asc.asc(word, pairs, debug, FILE_PATH)
-  File "/home/sasha/Documents/soundchanger/asc.py", line 34, in asc
-    word, steps = ar(word, lf(cur, pre))
-  File "/home/sasha/Documents/soundchanger/asc.py", line 8, in &lt;lambda>
-    lf = lambda f, pre='.': loadFile(pre + '/files/' + f)
-  File "/home/sasha/Documents/soundchanger/conlang/conlangApp.py", line 34, in loadFile
-    with open(fileName, encoding='utf-8') as f:
-FileNotFoundError: [Errno 2] No such file or directory: '/mit/sashacf/web_scripts/soundchanger/files/fluf'
-</pre>
+</table> </table> </table> </table> </table> </font> </font> </font><body bgcolor="#f0f0f8">
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#6622aa">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>KeyboardInterrupt</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial">Python 3.4.0: /mit/sashacf/bin/python3.4<br>Fri Aug 15 13:31:19 2014</font></td></tr></table>
+    
+<p>A problem occurred in a Python script.  Here is the sequence of
+function calls leading up to the error, in the order they occurred.</p>
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr><td bgcolor="#d8bbff"><big>&nbsp;</big><a href="file:///home/sasha/Documents/soundchanger/app.py">/home/sasha/Documents/soundchanger/app.py</a> in <strong><module></strong>()</td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;&nbsp;68</small>&nbsp;while&nbsp;True:<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;&nbsp;69</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;w:<br>
+</tt></font></td></tr>
+<tr><td bgcolor="#ffccee"><tt>=&gt;<small>&nbsp;&nbsp;&nbsp;70</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word&nbsp;=&nbsp;input()<br>
+</tt></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;&nbsp;71</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word,&nbsp;db&nbsp;=&nbsp;asc.asc(word,&nbsp;pairs,&nbsp;debug,&nbsp;FILE_PATH)<br>
+</tt></font></td></tr>
+<tr><td><font color="#909090"><tt>&nbsp;&nbsp;<small>&nbsp;&nbsp;&nbsp;72</small>&nbsp;<br>
+</tt></font></td></tr>
+<tr><td><small><font color="#909090"><strong>word</strong>&nbsp;= None, <em>builtin</em> <strong>input</strong>&nbsp;= &lt;built-in function input&gt;</font></small></td></tr></table><p><strong>KeyboardInterrupt</strong>: 
+<br><tt><small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small>&nbsp;</tt>args&nbsp;=
+()
+<br><tt><small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small>&nbsp;</tt>with_traceback&nbsp;=
+&lt;built-in method with_traceback of KeyboardInterrupt object&gt;
+
+
+<!-- The above is a description of an error in a Python program, formatted
+     for a Web browser because the 'cgitb' module was enabled.  In case you
+     are not reading this in a Web browser, here is the original traceback:
+
+Traceback (most recent call last):
+  File "./app.py", line 70, in &lt;module&gt;
+    word = input()
+KeyboardInterrupt
+
+-->
+

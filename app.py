@@ -10,6 +10,8 @@ import sys
 
 form = cgi.FieldStorage(encoding='utf-8')
 
+word = None
+w = False
 html = False
 debug = 0
 FILE_PATH = os.path.abspath(os.path.dirname(sys.argv[0]))
@@ -19,7 +21,6 @@ if 'word' in form:
     print('Content-Type: text/html')
     print('')
     print(FILE_PATH)
-    cgitb.enable()
     word = form['word'].value
     startd = {}
     endd = {}
@@ -31,21 +32,23 @@ if 'word' in form:
 else:
     parser = argparse.ArgumentParser()
     parser.add_argument('--word', '-w')
-    parser.add_argument('--start', '-s', nargs='+')
-    parser.add_argument('--end', '-e', nargs='+')
+    parser.add_argument('--start', '-s', action='append')
+    parser.add_argument('--end', '-e', action='append')
     parser.add_argument('--debug', '-d', type=int, default=0)
     parser.add_argument('--html', '-t', action='store_true')
     args = parser.parse_args()
-    if args.word is None:
-        word = input()
-    else:
-        word = args.word
+    word = args.word
+    if word is None:
+        w = True
     debug = args.debug
     if args.html:
         sys.stdout = Reencoder(sys.stdout)
         html = True
     start = args.start
     end = args.end
+
+if html:
+    cgitb.enable()
 
 for f in form:
     if f[0] == 's':
@@ -62,11 +65,19 @@ end = end or [v for k, v in sorted(endd.items())]
 
 pairs = list(zip(start, end))
 
-word, db = asc.asc(word, pairs, debug, FILE_PATH)
+while True:
+    if w:
+        try:
+            word = input()
+        except KeyboardInterrupt:
+            break
+    word, db = asc.asc(word, pairs, debug, FILE_PATH)
 
-if html:
-    print('<pre>')
-print(word)
-print(db)
-if html:
-    print('</pre>')
+    if html:
+        print('<pre>')
+    print(word)
+    print(db, end='')  # lint:ok
+    if html:
+        print('</pre>')
+    if not w:
+        break
