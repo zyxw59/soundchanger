@@ -14,7 +14,7 @@ html = False
 debug = 0
 
 if 'word' in form:
-    sys.stdout = Reencoder(sys.stdout)
+    #sys.stdout = Reencoder(sys.stdout)
     print('Content-Type: text/html')
     print('')
     cgitb.enable()
