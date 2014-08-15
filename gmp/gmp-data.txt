@@ -386,4 +386,5 @@ z̩ + a consonant||ɯzz
 !!Proto-Fluf → Proto-Bergish
 !!!Consonants
 tˤ dˤ ħ ʕ|0|t̪ d̪ θ ð
-cʷ ɟʷ çʷ ʝʷ||pʲ bʲ ɸʲ βʲ
+cʷ ɟʷ çʷ ʝʷ|before i y|p b ɸ β
+|otherwise|pʲ bʲ ɸʲ βʲ

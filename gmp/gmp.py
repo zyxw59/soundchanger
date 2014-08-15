@@ -29,7 +29,7 @@ class Reencoder():
 
 reencode = lambda s: s.encode('ascii', 'xmlcharrefreplace').decode()
 
-if args.input == None:
+if args.input is None:
     inFile = sys.stdin
 else:
     inFile = open(args.input, 'r')

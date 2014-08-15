@@ -1,0 +1,17 @@
+<!--: spam
+Content-Type: text/html
+
+<body bgcolor="#f0f0f8"><font color="#f0f0f8" size="-5"> -->
+<body bgcolor="#f0f0f8"><font color="#f0f0f8" size="-5"> --> -->
+</font> </font> </font> </script> </object> </blockquote> </pre>
+</table> </table> </table> </table> </table> </font> </font> </font><pre>Traceback (most recent call last):
+  File "./app.py", line 61, in &lt;module>
+    word, db = asc.asc(word, pairs, debug, FILE_PATH)
+  File "/home/sasha/Documents/soundchanger/asc.py", line 34, in asc
+    word, steps = ar(word, lf(cur, pre))
+  File "/home/sasha/Documents/soundchanger/asc.py", line 8, in &lt;lambda>
+    lf = lambda f, pre='.': loadFile(pre + '/files/' + f)
+  File "/home/sasha/Documents/soundchanger/conlang/conlangApp.py", line 34, in loadFile
+    with open(fileName, encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/mit/sashacf/web_scripts/soundchanger/files/fluf'
+</pre>
