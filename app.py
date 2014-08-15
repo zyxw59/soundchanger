@@ -2,11 +2,11 @@
 
 print('Content-Type: text/html')
 print('')
+import cgitb
+cgitb.enable()
 import argparse
 import asc
 import cgi
-import cgitb
-cgitb.enable()
 from core import *
 import os
 import sys
