@@ -1,25 +1,28 @@
 #! /usr/bin/env python3
 
-print('Content-Type: text/html')
-print('')
-import cgitb
-cgitb.enable()
 import argparse
 import asc
 import cgi
+import cgitb
 from core import *
 import os
 import sys
+
+sys.path = ['', '/mit/sashacf/lib/python34.zip', '/mit/sashacf/lib/python3.4',
+            '/mit/sashacf/lib/python3.4/plat-linux',
+            '/mit/sashacf/lib/python3.4/lib-dynload',
+            '/mit/sashacf/lib/python3.4/site-packages'] + sys.path
 
 form = cgi.FieldStorage(encoding='utf-8')
 
 html = False
 debug = 0
 
-print(form['word'])
-
 if 'word' in form:
     sys.stdout = Reencoder(sys.stdout)
+    print('Content-Type: text/html')
+    print('')
+    cgitb.enable()
     word = form['word'].value
     startd = {}
     endd = {}
@@ -58,16 +61,16 @@ for f in form:
         if endd[f] == ' ':
             endd[f] = ''
 
-#start = start or [v for k, v in sorted(startd.items())]
-#end = end or [v for k, v in sorted(endd.items())]
+start = start or [v for k, v in sorted(startd.items())]
+end = end or [v for k, v in sorted(endd.items())]
 
-#pairs = list(zip(start, end))
+pairs = list(zip(start, end))
 
-#word, db = asc.asc(word, pairs, debug, FILE_PATH)
+word, db = asc.asc(word, pairs, debug, FILE_PATH)
 
 if html:
     print('<pre>')
 print(word)
-#print(db)
+print(db)
 if html:
     print('</pre>')
