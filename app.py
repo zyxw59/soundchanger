@@ -56,8 +56,8 @@ for f in form:
         if endd[f] == ' ':
             endd[f] = ''
 
-start = start or [v for k, v in sorted(startd.items())]
-end = end or [v for k, v in sorted(endd.items())]
+#start = start or [v for k, v in sorted(startd.items())]
+#end = end or [v for k, v in sorted(endd.items())]
 
 pairs = list(zip(start, end))
 
@@ -66,6 +66,6 @@ pairs = list(zip(start, end))
 if html:
     print('<pre>')
 print(word)
-#print(db)
+print(db)
 if html:
     print('</pre>')
