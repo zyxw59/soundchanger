@@ -1,10 +1,8 @@
 #! /usr/bin/env python3
 
 import argparse
-import asc
 import cgi
 import cgitb
-from core import *
 import os
 import sys
 
@@ -12,6 +10,9 @@ sys.path = ['', '/mit/sashacf/lib/python34.zip', '/mit/sashacf/lib/python3.4',
             '/mit/sashacf/lib/python3.4/plat-linux',
             '/mit/sashacf/lib/python3.4/lib-dynload',
             '/mit/sashacf/lib/python3.4/site-packages'] + sys.path
+
+import asc
+from core import *
 
 form = cgi.FieldStorage(encoding='utf-8')
 
