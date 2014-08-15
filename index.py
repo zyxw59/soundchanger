@@ -6,6 +6,8 @@ from core import *
 
 cgitb.enable()
 
+sys.stdout = Reencoder(sys.stdout)
+
 print('Content-Type: text/html')
 print('')
 
@@ -14,9 +16,6 @@ fs = ['.' * f.count('.') + ('.' + f).rsplit('.', 1)[1] for f in files]
 
 with open('chars.txt', encoding='utf-8') as cf:
     chars = [l.split(' ') for l in cf.read().split('\n')]
-
-#chars = ['á', 'ɓ', 'β', 'ɗ', 'd͜ʑ', 'đ', 'é', 'ɛ', 'ɜ', 'ɘ', 'ə', 'ɠ', 'ɣ', 'ħ', 'ɦ',
-     #'ɨ', 'ñ', 'ŋ', 'ɲ', 'ó', 'ɔ', 'ɾ', 'ɕ', 't͜ɕ', 'ŧ', 'ú', 'ʷ', 'ʑ', 'ʔ', 'ˈ']
 
 print('''<!DOCTYPE html>
 <html>
