@@ -1,5 +1,7 @@
 #! /usr/bin/env python3
 
+print('Content-Type: text/html')
+print('')
 import argparse
 import asc
 import cgi
@@ -8,8 +10,6 @@ from core import *
 import os
 import sys
 
-print('Content-Type: text/html')
-print('')
 form = cgi.FieldStorage(encoding='utf-8')
 
 html = False
