@@ -12,11 +12,11 @@ form = cgi.FieldStorage(encoding='utf-8')
 
 html = False
 debug = 0
+print('Content-Type: text/html')
+print('')
 
 if 'word' in form:
     sys.stdout = Reencoder(sys.stdout)
-    print('Content-Type: text/html')
-    print('')
     cgitb.enable()
     word = form['word'].value
     startd = {}
