@@ -48,6 +48,8 @@ else:
 
 if html:
     cgitb.enable()
+else:
+    cgitb.enable(format='plain')
 
 for f in form:
     if f[0] == 's':
@@ -68,7 +70,7 @@ while True:
     if w:
         try:
             word = input()
-        except KeyboardInterrupt:
+        except (KeyboardInterrupt, EOFError):
             break
     word, db = asc.asc(word, pairs, debug, FILE_PATH)
 

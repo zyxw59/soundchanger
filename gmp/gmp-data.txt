@@ -138,9 +138,12 @@ any obstruent|between two obstruents|disappears
 |final|
 !!Old Elkehen → Middle Elkehen (200⁓900)#oe-mide
 !!!Vowels
-ə̯i ej ɛə̯|0|aj iː ɛw
+ij ej ɛj|0|iː
+uw ow ɔw||uː
+iw ɛə̯ εw||ew
+uj ɔə̯ ɔj||oj
+ə̯i ə̯u||aj aw
 ə̯ɨ əɨ̯ aə̯||aɨ̯
-ə̯u ow ɔə̯||aw uː ɔj
 u ʊ|short|y ʏ
 !!!Consonants
 any consonant|geminate|simplifies
