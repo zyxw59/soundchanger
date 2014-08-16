@@ -6,7 +6,7 @@ Vl = ɛ a ɔ
 Vo = {Vc} {Vm} {Vl}
 
 Vcl = ə̯i ə̯ɨ ə̯u
-Vml = ei̯ əɨ̯ ou̯
+Vml = ej əɨ̯ ow
 Vll = ɛə̯ aə̯ ɔə̯
 
 VL = {Vcl} {Vml} {Vll}
@@ -31,21 +31,22 @@ Rc = ɻ j
 L = l ʎ
 J = j w
 C = {N} {P} {B} {S} {Z} {R} {L} {J}
+Cc = {N} {P} {B} {S} {Z} {R} {L}
 
-Co = {P} {B} {S} {Z} {Rv} {Rf}
-Cs = {N} {Ro} {Rc} {L} {J}
+Co = {P} {B} {S} {Z} {Ro} {Rv} {Rf}
+Cs = {N} {Rc} {L} {J} ʁ
 Cv = {N} {B} {Z} {R} {L} {J}
 Cf = {P} {S}
 
 
 {0:Vo}ː > {0:VL}
-{0:Vcs} > {0:Vos} / _({C}?{V})|# ! _.̯
-{0:Vos} > {0:Vcs} / _{C}({C}|#)
+{0:Vcs} > {0:Vos} / _({J}?{C}?{V})|# ! _.̯
+{0:Vos} > {0:Vcs} / _{Cc}({C}|#)
 
 ɨa = ɨ a
 {ɨa} > ə ! ˈ(ə̯)?_̯?
-ə > a / ˈ_({C}?{V})|#
-ə > ɨ / ˈ_{C}({C}|#)
+ə > a / ˈ_({J}?{C}?{V})|#
+ə > ɨ / ˈ_{Cc}({C}|#)
 
 {0:VO} > {0:VN} / _{N}
 

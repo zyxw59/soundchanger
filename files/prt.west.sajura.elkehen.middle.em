@@ -1,7 +1,7 @@
 Vs = i ɨ y ɪ ʏ e ə o ɛ a ɔ ĩ ỹ ɨ̃ ũ ɪ̃ ʏ̃ ʊ̃ ẽ ə̃ õ ɛ̃ ã ɔ̃
 
 Vlco = iː uː ĩː ũː
-Vlmo = ɛw ɔj ɛ̃w ɔ̃j
+Vlmo = ew oj ẽw õj
 Vllo = aj aɨ̯ aw ãj ãɨ̯ ãw
 
 Vlcn = i u ĩ ũ
@@ -18,8 +18,8 @@ Vo = i y ɨ u ɪ ʏ ʊ e ə o ɛ a ɔ ø ɤ œ ʌ
 N = m n 0 ɲ  0  0  ŋ
 P = p t 0 t͜ɕ t͡ʃ  ʈ͡ʂ k
 B = b d 0 d͜ʑ d͡ʒ ɖ͡ʐ g
-S = 0 0 s ɕ  ʃ  ʂ  0
-Z = β ð z ʑ  ʒ  ʐ  ɣ
+S = 0 0 s ɕ  ʃ  ʂ  χ
+Z = β ð z ʑ  ʒ  ʐ  ʁ
 R = ɾ r ɾʲ ʀ ɻ χ ʁ ç ʝ
 L = l ʎ
 J = j w

@@ -1,12 +1,13 @@
 Vs = i ɨ u ɪ ʊ e ə o ɛ a ɔ ĩ ɨ̃ ũ ɪ̃ ʊ̃ ẽ ə̃ õ ɛ̃ ã ɔ̃
 
-Vlfo = ə̯i ej ɛj ɛə̯ ew ə̯ĩ ẽj ɛ̃ə̯
-Vlco = ə̯ɨ əɨ̯    aə̯    ə̯ɨ̃ ə̃ɨ̯ ãə̯
-Vlbo = ə̯u ow ɔw ɔə̯ oj ə̯ũ õw ɔ̃ə̯
+Vlfo = ə̯i ij ej ɛj iw ɛə̯ ɛw ə̯ĩ ĩj ẽj ɛ̃j ĩw ɛ̃ə̯ ɛ̃w
+Vlfn = aj iː iː iː ew ew ew ãj ĩː ĩː ĩː ẽw ẽw ẽw
 
-Vlfn = aj iː iː ɛw ɛw ãj ĩː ɛ̃w 
-Vlcn = aɨ̯ aɨ̯    aɨ̯    ãɨ̯ ãɨ̯ ãɨ̯
-Vlbn = aw uː uː ɔj ɔj ãw ũː ɔ̃j
+Vlbo = ə̯u uw ow ɔw uj ɔə̯ ɔj ə̯ũ ũw õw ɔ̃w ũj ɔ̃ə̯ ɔ̃j
+Vlbn = aw uː uː uː oj oj oj ãw ũː ũː ũː õj õj õj
+
+Vlco = ə̯ɨ əɨ̯ aə̯ ə̯ɨ̃ ə̃ɨ̯ ãə̯
+Vlcn = aɨ̯ aɨ̯ aɨ̯ ãɨ̯ ãɨ̯ ãɨ̯
 
 Vlo = {Vlfo} {Vlco} {Vlbo}
 Vln = {Vlfn} {Vlcn} {Vlbn}
