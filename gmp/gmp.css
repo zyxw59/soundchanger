@@ -19,9 +19,6 @@ table, th, td {
 table {
   width: 50%;
 }
-td.c0, td.c2 {
-  white-space: nowrap;
-}
 td.c0.m, td.c1.m, td.s1.c0, td.s1.c1 {
   border-right-width: 3px;
 }

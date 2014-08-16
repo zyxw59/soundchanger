@@ -1,49 +1,49 @@
 Proto-elejáw Grand Master Plan
 !!Proto-elejáw → Proto-Western (-3000⁓-1000)#pel-pw
 !!!Vowels
-ɨj ɘj ɜj aj|before a vowel|ɨj ej ɛj aj
-|otherwise|i e ɛ æ
-ɨw ɘw ɜw aw|before a vowel|ɨw ow ɔw aw
-|otherwise|u o ɔ ɒ
-ɨ ɘ ɜ a|before n t d ɗ ŋ k ɡ ɠ|i e ɛ æ
-|before m p b ɓ ŋʷ kʷ ɡʷ ɠʷ|u o ɔ ɒ
-ɘ ɜ|0|ə
+ɨj ɘj ɜj aj|before a vowel|ɨj ej ɛj aj
+|otherwise|i e ɛ æ
+ɨw ɘw ɜw aw|before a vowel|ɨw ow ɔw aw
+|otherwise|u o ɔ ɒ
+ɨ ɘ ɜ a|before n t d ɗ ŋ k ɡ ɠ|i e ɛ æ
+|before m p b ɓ ŋʷ kʷ ɡʷ ɠʷ|u o ɔ ɒ
+ɘ ɜ|0|ə
 any vowel|in open, stressed syllables|lengthens
 !!!Consonant Clusters
 0|before initial consonant cluster|insertion of ə
 |after the second of three or more consecutive consonants|
 any consonant|word-final after a consonant|disappears
-s h|after a voiced consonant|z ɦ
+s h|after a voiced consonant|z ɦ
 z|after a voiceless consonant|s
 !!!Syllables
 vowel + h|unstressed before vowel + h|disappears
 h + vowel|unstressed before h + vowel|disappears
 !!!Consonants
-kʷ ɡʷ ɠʷ ŋʷ|0|wkw wɡw wɠw wŋw
+kʷ ɡʷ ɠʷ ŋʷ|0|wkw wɡw wɠw wŋw
 w|between consonants|disappears
 |before an initial consonant|
 |after a final consonant|
-|after u o ɔ ɒ and before a consonant|
-b d ɡ|0|β ð ɣ
-ɓ ɗ ɠ||b d ɡ
+|after u o ɔ ɒ and before a consonant|
+b d ɡ|0|β ð ɣ
+ɓ ɗ ɠ||b d ɡ
 r|0|ɾ
 any consonant|intervocalically before a stressed vowel|geminates
 !!Proto-Western → Old Sájura (-1000⁓-500)#pw-os
 !!!Vowels
-ɨ ə a|after stressed syllables|disappears
-i e ɛ æ||j
-u o ɔ ɒ||w
-æ ɒ|0|a ɔ
+ɨ ə a|after stressed syllables|disappears
+i e ɛ æ||j
+u o ɔ ɒ||w
+æ ɒ|0|a ɔ
 long vowels|before j or w|shortens
 |in closed syllables|
 !!!Consonants
-h ɦ ʔ|0|disappears
-n t ð d s z ɾ l + j|0|ɲ t͜ɕ j d͜ʑ ɕ ʑ ɾʲ ʎ
-w j l ɾ|between consonants|u i o ə
+h ɦ ʔ|0|disappears
+n t ð d s z ɾ l + j|0|ɲ t͜ɕ j d͜ʑ ɕ ʑ ɾʲ ʎ
+w j l ɾ|between consonants|u i o ə
 !!Old Sájura → Old Purrub (-500⁓200)#os-op
 !!!Vowels
 long vowels|0|shorten
-e o|0|ɛ ɔ
+e o|0|ɛ ɔ
 ɨ||ɨ~ɯ
 0|before initial vowels|insertion of ʔ
 |intervocalically|
@@ -51,116 +51,116 @@ e o|0|ɛ ɔ
 0|finally|stressed
 |otherwised|unstressed
 !!!Consonants
-m n ɲ ŋ|before m p b β w|m
-|before n t d ð s z l ɾ r|n
-|before ɲ t͜ɕ d͜ʑ ɕ ʑ ʎ ɾʲ j|ɲ
-|before ŋ k g ɣ|ŋ
+m n ɲ ŋ|before m p b β w|m
+|before n t d ð s z l ɾ r|n
+|before ɲ t͜ɕ d͜ʑ ɕ ʑ ʎ ɾʲ j|ɲ
+|before ŋ k g ɣ|ŋ
 ð|0|z
-z|after t, d, or s and not before a vowel|z̩
+z|after t d s and not before a vowel|z̩
 l|not adjacent to a vowel|l̩
-ʑ j ɾʲ ʎ|0|ʑ~j
-β w||v~w
-ɾ r|0|ʁ ʁʁ
+ʑ j ɾʲ ʎ|0|ʑ~j
+β w||v~w
+ɾ r|0|ʁ ʁʁ
 (C)C₁C₂(C)|intervocalically|C₁C₁
 |initially|C₁
 |finally|
 !!Old Purrub → Middle Purrub (200⁓900)#op-midp
 !!!Vowels
-i ɛ|pre-stress|e
-u ɔ||o
-ɯ ə a||ə
+i ɛ|pre-stress|e
+u ɔ||o
+ɯ ə a||ə
 !!!Consonants
-ʁʁ ll|intervocalically|χ ɫ
-v ʑ||w j
-z ɣ||disappears
-vv zz ʑʑ ɣɣ||v z ʑ ɣ
-b d d͜ʑ g||
-bb dd dd͜ʑ gg||b d d͜ʑ g
-mm nn ɲɲ ŋŋ||mb nd ɲd͜ʑ ŋg
-pp tt ss tt͜ɕ ɕɕ kk||pʰ tʰ sʰ t͜ɕʰ ɕʰ kʰ
-p t s t͜ɕ ɕ k|initially|
-b d d͜ʑ g||p t t͜ɕ k
-#l ɾ|coda, following u ʊ|o̯ ə̯
-#|coda, following ə ɜ a|w ɨ̯
-#|coda, otherwise|w ə̯
-#|intervocalically following l, ll, or ʎ + vowel|ɾ
-#|intervocalically following ɾ, r, or ɾʲ + vowel|l
-#|following β ð ɣ n|ɫ r
+ʁʁ ll|intervocalically|χ ɫ
+v ʑ||w j
+z ɣ||disappears
+vv zz ʑʑ ɣɣ||v z ʑ ɣ
+b d d͜ʑ g||
+bb dd dd͜ʑ gg||b d d͜ʑ g
+mm nn ɲɲ ŋŋ||mb nd ɲd͜ʑ ŋg
+pp tt ss tt͜ɕ ɕɕ kk||pʰ tʰ sʰ t͜ɕʰ ɕʰ kʰ
+p t s t͜ɕ ɕ k|initially|
+b d d͜ʑ g||p t t͜ɕ k
+#l ɾ|coda, following u ʊ|o̯ ə̯
+#|coda, following ə ɜ a|w ɨ̯
+#|coda, otherwise|w ə̯
+#|intervocalically following l ll ʎ + vowel|ɾ
+#|intervocalically following ɾ r ɾʲ + vowel|l
+#|following β ð ɣ n|ɫ r
 #|following another consonant|ɹ
 !!Middle Purrub → Early Modern Purrub (900⁓1400)#midp-emp
 !!!Vowels
-u o ɔ|unstressed\after a non-rounded vowel|w
+u o ɔ|unstressed\after a non-rounded vowel|w
 |\after a rounded vowel|disappears
-i e ɛ|\after a non-front vowel|j
+i e ɛ|\after a non-front vowel|j
 |\after a front vowel|disappears
 ɯ|\after a non-high vowel|ɰ
 |\after a high vowel|disappears
 any vowel|before a coda nasal|nasalizes
-j w ɰ||
+j w ɰ||
 !!!Consonants
-pʰ tʰ sʰ t͜ɕʰ ɕʰ kʰ|0|ɸ θ h ɕ ç x
-m n ɲ ŋ|coda|disappears
-t͜ɕ d͜ʑ ɕ ʑ|before a back vowel|ʈ͡ʂ ɖ͡ʐ ʂ ʐ
+pʰ tʰ sʰ t͜ɕʰ ɕʰ kʰ|0|ɸ θ h ɕ ç x
+m n ɲ ŋ|coda|disappears
+t͜ɕ d͜ʑ ɕ ʑ|before a back vowel|ʈ͡ʂ ɖ͡ʐ ʂ ʐ
 |word finally after a back vowel|
 !!Early Modern Purrub → Modern Purrub (1400⁓1800)#emp-mp
 !!!Vowels
-ɯw əw ɯw̃ əw̃|0|u o ũ õ
-oɰ ɔɰ oɰ̃ ɔɰ̃||
-iw ew ɛw iw̃ ew̃ ɛw̃||y ø œ ỹ ø̃ œ̃
-uj oj ɔj uj̃ oj̃ ɔj̃||
-ɯj əj ɯj̃ əj̃||i e ĩ ẽ
-eɰ ɛɰ eɰ̃ ɛɰ̃||
-əɰ aɰ əɰ̃ aɰ̃||ɯ ə ɯ̃ ə̃
-aj aw aj̃ aw̃||ɛ ɔ ɛ̃ ɔ̃
+ɯw əw ɯw̃ əw̃|0|u o ũ õ
+oɰ ɔɰ oɰ̃ ɔɰ̃||
+iw ew ɛw iw̃ ew̃ ɛw̃||y ø œ ỹ ø̃ œ̃
+uj oj ɔj uj̃ oj̃ ɔj̃||
+ɯj əj ɯj̃ əj̃||i e ĩ ẽ
+eɰ ɛɰ eɰ̃ ɛɰ̃||
+əɰ aɰ əɰ̃ aɰ̃||ɯ ə ɯ̃ ə̃
+aj aw aj̃ aw̃||ɛ ɔ ɛ̃ ɔ̃
 !!!Consonants
-x ɣ|0|χ ʁ
+x ɣ|0|χ ʁ
 !!Old Sájura → Old Elkehen (-500⁓200)#os-oe
 !!!Vowels
-i e ɛ|long|ə̯i ej ɛə̯
-ɨ ə a||ə̯ɨ əɨ̯ aə̯
-u o ɔ||ə̯u ow ɔə̯
-ɛ ɔ|in open syllables|e o
-i e u o|in closed syllables|ɪ ɛ ʊ ɔ
-ɨ a|unstressed|ə
+i e ɛ|long|ə̯i ej ɛə̯
+ɨ ə a||ə̯ɨ əɨ̯ aə̯
+u o ɔ||ə̯u ow ɔə̯
+ɛ ɔ|in open syllables|e o
+i e u o|in closed syllables|ɪ ɛ ʊ ɔ
+ɨ a|unstressed|ə
 ə|stressed\open syllables|a
 |\closed syllables|ɨ
 any vowel|before a nasal|nasalizes
 !!!Syllables
-əw əj|initially before a consonant|wə jə
+əw əj|initially before a consonant|wə jə
 !!!Consonants
 r|0|ʀ
 ɾ|initially|
-ɾ ɾʲ|before a voiced consonant|ʁ ʝ
-|word finally or before a voiceless consonant|χ ç
-|following a consonant|ɻ j
+ɾ ɾʲ|before a voiced consonant|ʁ ʝ
+|word finally or before a voiceless consonant|χ ç
+|following a consonant|ɻ j
 ɣ|0|ʁ
 any obstruent|between two obstruents|disappears
 |final|
 !!Old Elkehen → Middle Elkehen (200⁓900)#oe-mide
 !!!Vowels
-ij ej ɛj|0|iː
-uw ow ɔw||uː
-iw ɛə̯ εw||ew
-uj ɔə̯ ɔj||oj
-ə̯i ə̯u||aj aw
-ə̯ɨ əɨ̯ aə̯||aɨ̯
-u ʊ|short|y ʏ
+ij ej ɛj|0|iː
+uw ow ɔw||uː
+iw ɛə̯ εw||ew
+uj ɔə̯ ɔj||oj
+ə̯i ə̯u||aj aw
+ə̯ɨ əɨ̯ aə̯||aɨ̯
+u ʊ|short|y ʏ
 !!!Consonants
 any consonant|geminate|simplifies
 any nasal|coda|disappears
-t d s z + j|0|t͜ɕ d͜ʑ ɕ ʑ
-t d s z + ɻ||ʈ͡ʂ ɖ͡ʐ ʂ ʐ
-t͜ɕ d͜ʑ ɕ ʑ + ɻ||
-ɻ j|after voiced consonants|ʐ ʑ
-|after voiceless consonants|ʂ ɕ
-ɾ ɾʲ|0|l ʎ
+t d s z + j|0|t͜ɕ d͜ʑ ɕ ʑ
+t d s z + ɻ||ʈ͡ʂ ɖ͡ʐ ʂ ʐ
+t͜ɕ d͜ʑ ɕ ʑ + ɻ||
+ɻ j|after voiced consonants|ʐ ʑ
+|after voiceless consonants|ʂ ɕ
+ɾ ɾʲ|0|l ʎ
 !!Middle Elkehen → Early Modern Elkehen (900⁓1400)#mide-eme
 !!!Vowels
-aj aɨ̯ aw|before a vowel|ej əɨ̯ ow
-|otherwise|ɛ ə ɔ
-ɛw ɔj|in open syllables|ø ɤ
-|in closed syllables|œ ʌ
-i u|long|shorten
+aj aɨ̯ aw|before a vowel|ej əɨ̯ ow
+|otherwise|ɛ ə ɔ
+ew oj|in open syllables|ø ɤ
+|in closed syllables|œ ʌ
+i u|long|shorten
 nasal vowels|before a nasal|denasalize
 any vowel|finally and unstressed|disappears
 |post-stress in non-final syllables|
@@ -169,101 +169,101 @@ any vowel|finally and unstressed|disappears
 any fricative|before another fricative|disappears
 !!Early Modern Elkehen → Modern Elkehen (1400⁓1800)#eme-me
 !!!Vowels
-ẽ ø̃ ɤ̃ õ|0|ɛ̃ œ̃ ʌ̃ ɔ̃
-ĩ ɪ̃||ẽ
-ỹ ʏ̃||ø̃
+ẽ ø̃ ɤ̃ õ|0|ɛ̃ œ̃ ʌ̃ ɔ̃
+ĩ ɪ̃||ẽ
+ỹ ʏ̃||ø̃
 ũ||õ
 ɨ̃||ə̃
 !!!Syllables
 0|finally|stressed
 |otherwise|unstressed
 !!!Consonants
-p b v w|finally after p t t͜ɕ ʈ͡ʂ k b d d͜ʑ ɖ͡ʐ g|u
-t͜ɕ d͜ʑ ɕ ʑ ç ʝ j||i
-k g ɣ||ɨ
-t d ð||ə
+p b v w|finally after p t t͜ɕ ʈ͡ʂ k b d d͜ʑ ɖ͡ʐ g|u
+t͜ɕ d͜ʑ ɕ ʑ ç ʝ j||i
+k g ɣ||ɨ
+t d ð||ə
 !!Proto-Western → Proto Western B (-1000⁓-500)#pw-pwb
 !!!Vowels
-i e ɛ æ|followed by a coda nasal|ẽ
-ɨ ə a||ə̃
-u o ɔ ɒ||õ
+i e ɛ æ|followed by a coda nasal|ẽ
+ɨ ə a||ə̃
+u o ɔ ɒ||õ
 !!!Consonants
-m n ŋ|after a nasal vowel|disappears
-k g ɣ|before i e ɛ|t͜s d͜z ʒ
-nj ŋj|0|ɲ
+m n ŋ|after a nasal vowel|disappears
+k g ɣ|before i e ɛ|t͜s d͜z ʒ
+nj ŋj|0|ɲ
 β|0|v
-j w|after a voiced consonant|ʒ v
-|after a voiceless consonant|ʃ f
+j w|after a voiced consonant|ʒ v
+|after a voiceless consonant|ʃ f
 |word finally|
-h ɦ|before i e ɛ æ|ʃ ʒ
-|before u o ɔ ɒ|f v
-|before ɨ ə a|x ɣ
-|after i e ɛ æ\before a voiced consonant|ʒ
-|after u o ɔ ɒ\|v
-|after ɨ ə a\|ɣ
-|after i e ɛ æ\before a voiceless consonant or word finally|ʃ
-|after u o ɔ ɒ\|f
-|after ɨ ə a\|x
+h ɦ|before i e ɛ æ|ʃ ʒ
+|before u o ɔ ɒ|f v
+|before ɨ ə a|x ɣ
+|after i e ɛ æ\before a voiced consonant|ʒ
+|after u o ɔ ɒ\|v
+|after ɨ ə a\|ɣ
+|after i e ɛ æ\before a voiceless consonant or word finally|ʃ
+|after u o ɔ ɒ\|f
+|after ɨ ə a\|x
 ʔ|between vowels|ʔ
 |otherwise|disappears
-s z|adjacent to ʒ|ʒ
-s z|adjacent to ʃ|ʃ
+s z|adjacent to ʒ|ʒ
+s z|adjacent to ʃ|ʃ
 !!Proto Western B → Old Western B (-500⁓-300)#pwb-owb
 !!!Vowels
-i ɨ u|long|ə̯i ə̯ɨ ə̯u
-e o||eə̯ oə̯
-ɛ ɔ||ea̯ oa̯
-æ ɒ||aːj aːw
-|stressed|aj aw
-|unstressed|ɛ ɔ
+i ɨ u|long|ə̯i ə̯ɨ ə̯u
+e o||eə̯ oə̯
+ɛ ɔ||ea̯ oa̯
+æ ɒ||aːj aːw
+|stressed|aj aw
+|unstressed|ɛ ɔ
 !!Old Western B → Middle Western B (-300⁓100)#owb-mwb
 !!!Vowels
-ə̯i ə̯ɨ ə̯u|0|aj aɰ aw
-eə̯ oə̯||jo we
-ea̯ oa̯||ja wa
+ə̯i ə̯ɨ ə̯u|0|aj aɰ aw
+eə̯ oə̯||jo we
+ea̯ oa̯||ja wa
 !!!Consonants:
-ʃ ʒ|0|ʂ ʐ
-m p b f v|before i e ɛ j|mʲ pʲ bʲ fʲ vʲ
-n t d s z l ɾ r||ɲ t͜ɕ d͜ʑ ɕ ʑ ʎ ɾʲ rʲ
-ŋ k g x ɣ||ɲ c ɟ ç ʝ
+ʃ ʒ|0|ʂ ʐ
+m p b f v|before i e ɛ j|mʲ pʲ bʲ fʲ vʲ
+n t d s z l ɾ r||ɲ t͜ɕ d͜ʑ ɕ ʑ ʎ ɾʲ rʲ
+ŋ k g x ɣ||ɲ c ɟ ç ʝ
 j|after a palatalized consonant|disappears
 !!Old Western B → Spanish? (-300⁓100)#owb-span
 !!!Vowels
-ɨ ə|adjacent to m p b f v w|u o
-|otherwise|i a
-ə̯i ə̯u|0|aj aw
-eə̯ oə̯||je we
-ea̯ oa̯||ja wa
-e o|stressed|e o
-|unstressed|i u
-ɛ ɔ|stressed|je we
-|unstressed|e o
+ɨ ə|adjacent to m p b f v w|u o
+|otherwise|i a
+ə̯i ə̯u|0|aj aw
+eə̯ oə̯||je we
+ea̯ oa̯||ja wa
+e o|stressed|e o
+|unstressed|i u
+ɛ ɔ|stressed|je we
+|unstressed|e o
 !!!Consonants
-d͜z z ʒ|0|t͜s s ʃ
+d͜z z ʒ|0|t͜s s ʃ
 !!Proto-elejáw → Proto-Eastern (-3000⁓-1500)#pel-pe
 !!!Vowels
-ɨw ɘw ɜw|before a vowel|ɨw ow ɛw
-|otherwise|u o ɔ
-ɨŋʷ ɘŋʷ ɜŋʷ aŋʷ|before a vowel|ɨw̃ ow̃ ɛw̃ aw̃
-|otherwise|ũ õ ɔ̃ aw̃
-ɨj ɘj ɜj|before a vowel|ɨj oj ɛj
-|otherwise|i e ɛ
-ɘ ɜ|0|o ɛ
+ɨw ɘw ɜw|before a vowel|ɨw ow ɛw
+|otherwise|u o ɔ
+ɨŋʷ ɘŋʷ ɜŋʷ aŋʷ|before a vowel|ɨw̃ ow̃ ɛw̃ aw̃
+|otherwise|ũ õ ɔ̃ aw̃
+ɨj ɘj ɜj|before a vowel|ɨj oj ɛj
+|otherwise|i e ɛ
+ɘ ɜ|0|o ɛ
 !!!Consonants
-kʷ ɡʷ ɠʷ|0|p b ɓ
-ɓ ɗ ɠ|0|mb nd ŋɡ
-any consonant|before mb nd ŋg|disappears
-h ʔ|between two consonants|disappears
+kʷ ɡʷ ɠʷ|0|p b ɓ
+ɓ ɗ ɠ|0|mb nd ŋɡ
+any consonant|before mb nd ŋg|disappears
+h ʔ|between two consonants|disappears
 |word initial before a consonant|
 |word final after a consonant|
-m n ŋ|before m, n, or ŋ|disappears
-|adjacent to b or p|m
-|adjacent to d or t|n
-|adjacent to ɡ or k|ŋ
-ŋʷ|after b or p|mw
-|after d or t|nw
-|after ɡ or k|ŋw
-|after m, n, or ŋ|w
+m n ŋ|before m n ŋ|disappears
+|adjacent to b or p|m
+|adjacent to d or t|n
+|adjacent to ɡ or k|ŋ
+ŋʷ|after b or p|mw
+|after d or t|nw
+|after ɡ or k|ŋw
+|after m, n, or ŋ|w
 |otherwise|w̃
 !!Pre-Proto-Fluf → Proto-Fluf#ppf-pf
 !!!Vowels
@@ -348,46 +348,46 @@ l|\l̩|
 h|\ə|
 !!Fluf Harmony#pf-h
 !!!Vowels
-i ɯ e ɤ ə\y u ø o|with last vowel\i y z̩|i\y
-\|\e ø|e\ø
-i ɯ e ɤ\y u ø o ə|\ɯ u l̩|ɯ\u
-\|\ɤ o a|ɤ\o
+i ɯ e ɤ ə\y u ø o|with last vowel\i y z̩|i\y
+\|\e ø|e\ø
+i ɯ e ɤ\y u ø o ə|\ɯ u l̩|ɯ\u
+\|\ɤ o a|ɤ\o
 !!Proto-Fluf → Iealkh#pf-ilk
 !!!Vowels
 ɑ|0|a
-y ɯ||ø ɤ
-e o||ɛ ɔ
+y ɯ||ø ɤ
+e o||ɛ ɔ
 !!!Consonants
 any nasal|before a labial|m
 |before a dental|n
 |before a pharyngeal|
 |before a (labio-) palatal|ɲ
 |before a velar|ŋ
-ɸ β|0|f v
-ħ ʕ||χ ʁ
+ɸ β|0|f v
+ħ ʕ||χ ʁ
 (C)C₁C₂(C)|intervocalically|C₁C₁
 |initially|C₁
 |finally|
 !!Iealkh → Old Purrub (-500⁓200)#ilk-op
 !!!Consonants
-c ɟ ç ʝ|0|t͜ɕ d͜ʑ ɕ ʑ
-cʷ ɟʷ çʷ ʝʷ||
-tˤ dˤ|0|t d
-f ff|adjacent to u ɔ|ɸ
+c ɟ ç ʝ|0|t͜ɕ d͜ʑ ɕ ʑ
+cʷ ɟʷ çʷ ʝʷ||
+tˤ dˤ|0|t d
+f ff|adjacent to u ɔ|ɸ
 |otherwise|disappears
-∅ h|between two vowels or initially\before u ɔ|ɸ
-|\before a|ʁ
-|\before z̩|s
-|\before i ɛ ø|ɕ
-|\before ɤ|ɣ
-|\before l|disappears
+∅ h|between two vowels or initially\before u ɔ|ɸ
+|\before a|ʁ
+|\before z̩|s
+|\before i ɛ ø|ɕ
+|\before ɤ|ɣ
+|\before l|disappears
 !!!Vowels
-ø ɤ|0|ɛ ɯ
-z̩|after t d s|z̩
+ø ɤ|0|ɛ ɯ
+z̩|after t d s|z̩
 |otherwise|ɯz
 z̩ + a consonant||ɯzz
 !!Proto-Fluf → Proto-Bergish
 !!!Consonants
-tˤ dˤ ħ ʕ|0|t̪ d̪ θ ð
-cʷ ɟʷ çʷ ʝʷ|before i y|p b ɸ β
-|otherwise|pʲ bʲ ɸʲ βʲ
+tˤ dˤ ħ ʕ|0|t̪ d̪ θ ð
+cʷ ɟʷ çʷ ʝʷ|before i y|p b ɸ β
+|otherwise|pʲ bʲ ɸʲ βʲ
