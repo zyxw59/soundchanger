@@ -20,7 +20,6 @@ if 'word' in form:
     sys.stdout = Reencoder(sys.stdout)
     print('Content-Type: text/html')
     print('')
-    print(FILE_PATH)
     word = form['word'].value
     startd = {}
     endd = {}
