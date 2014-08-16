@@ -24,17 +24,19 @@ B = b d 0 d͜ʑ g
 S = 0 0 s ɕ  x
 Z = β ð z ʑ  ɣ
 R = ɾ r ɾʲ ʀ ɻ χ ʁ ç ʝ
-L = l ʎ
-J = j w
-C = {N} {P} {B} {S} {Z} {R} {L} {J}
-
-Cv = {N} {B} {Z} {R} {L} {J}
-Cf = {P} {S}
-
 Ro = ɾ ɾʲ
 Rv = ʁ ʝ
 Rf = χ ç
 Rc = ɻ j
+L = l ʎ
+J = j w
+C = {N} {P} {B} {S} {Z} {R} {L} {J}
+
+Co = {P} {B} {S} {Z} {Rv} {Rf}
+Cs = {N} {Ro} {Rc} {L} {J}
+Cv = {N} {B} {Z} {R} {L} {J}
+Cf = {P} {S}
+
 
 {0:Vo}ː > {0:VL}
 {0:Vcs} > {0:Vos} / _({C}?{V})|# ! _.̯
@@ -56,5 +58,5 @@ r > ʀ
 {0:Ro} > {0:Rf} / _{Cf}
 {0:Ro} > {0:Rc} / {C}_ ! _ʲ
 ɣ > ʁ
-{C} > 0 / {C}_{C}
-{C} > 0 / _#
+{Co} > 0 / {Co}_{Co}
+{Co} > 0 / _#

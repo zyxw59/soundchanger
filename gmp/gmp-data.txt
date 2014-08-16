@@ -116,9 +116,9 @@ aj aw aj̃ aw̃||ɛ ɔ ɛ̃ ɔ̃
 x ɣ|0|χ ʁ
 !!Old Sájura → Old Elkehen (-500⁓200)#os-oe
 !!!Vowels
-i e ɛ|long|ə̯i ei̯ ɛə̯
+i e ɛ|long|ə̯i ej ɛə̯
 ɨ ə a||ə̯ɨ əɨ̯ aə̯
-u o ɔ||ə̯u ou̯ ɔə̯
+u o ɔ||ə̯u ow ɔə̯
 ɛ ɔ|in open syllables|e o
 i e u o|in closed syllables|ɪ ɛ ʊ ɔ
 ɨ a|unstressed|ə
@@ -134,13 +134,13 @@ r|0|ʀ
 |word finally or before a voiceless consonant|χ ç
 |following a consonant|ɻ j
 ɣ|0|ʁ
-any consonant|between two consonants|disappears
+any obstruent|between two obstruents|disappears
 |final|
 !!Old Elkehen → Middle Elkehen (200⁓900)#oe-mide
 !!!Vowels
-ə̯i ei̯ ɛə̯|0|aj iː ɛw
+ə̯i ej ɛə̯|0|aj iː ɛw
 ə̯ɨ əɨ̯ aə̯||aɨ̯
-ə̯u ou̯ ɔə̯||aw uː ɔj
+ə̯u ow ɔə̯||aw uː ɔj
 u ʊ|short|y ʏ
 !!!Consonants
 any consonant|geminate|simplifies
