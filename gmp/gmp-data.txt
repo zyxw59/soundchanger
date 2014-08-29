@@ -140,7 +140,7 @@ any other consonant|before a consonant-initial word|
 |\ɯ ɤ ə ʌ|ç h h
 |\u o ɔ w|çʷ ʍ ʍ
 w|after\çʷ ʍ|disappears
-j|\ç|disappears
+j|\ç|
 !!Old Sájura → Old Elkehen (-500⁓200)#os-oe
 !!!Vowels
 i e ɛ|long|ə̯i ej ɛə̯
