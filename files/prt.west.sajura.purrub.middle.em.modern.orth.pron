@@ -1,0 +1,50 @@
+Vo = i y u e ë o a
+Vpo = i y ɯ u e ø ə ɤ o ɛ œ a ʌ ɔ
+Vpn = ĩ ỹ ɯ̃ ũ ẽ ø̃ ə̃ ɤ̃ õ ɛ̃ œ̃ ã ʌ̃ ɔ̃
+
+N = m n 0 n̥ 0 ŋ  0
+P = p t 0 t̥ 0 k  0
+B = b d 0 d̥ 0 g  0
+S = p̌ ť s s̥ š̥ ǩ  š
+Z = v z z z̥ 0 r  0
+W = w l 0 j 0 ll 0
+
+C = {N} {P} {B} {S} {Z} {W}
+
+Fp = f θ h ç χ
+Fo = p̌ ť š š̥ ǩ
+
+Jp = ɲ t͜ɕ d͜ʑ ɕ ʑ
+Jo = n̥ t̥  d̥  s̥ z̥
+
+0 > ˈ / _{Vo}{C}*#
+
+z > z̩ / {C}_
+l > z̩ / {C}_
+
+ll > ɫ
+rr > ʁ
+r > ʁ
+
+{0:Fo} > {0:Fp}
+
+ew > ø / _{C}*ˈ
+eu > œ / _{C}*ˈ
+ew > œ
+
+o > ɔ ! _{C}*ˈ
+e > ɛ ! _{C}*ˈ
+aw > ɔ / _{C}*ˈ
+aj > ɛ / _{C}*ˈ
+ëw > o ! _{C}*ˈ
+ëj > e ! _{C}*ˈ
+
+y > ɯ
+iw > y
+ë > ə
+
+ĺ > l̩
+
+{0:Vpo}{N} > {0:Vpn} / _{B}|#
+
+{0:Jp} > {0:Jo}
