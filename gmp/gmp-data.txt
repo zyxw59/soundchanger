@@ -100,8 +100,6 @@ j w ɰ||
 !!!Consonants
 pʰ tʰ sʰ t͜ɕʰ ɕʰ kʰ|0|ɸ θ h ɕ ç x
 m n ɲ ŋ|coda|disappears
-t͜ɕ d͜ʑ ɕ ʑ|before a back vowel|ʈ͡ʂ ɖ͡ʐ ʂ ʐ
-|word finally after a back vowel|
 !!Early Modern Purrub → Modern Purrub (1400⁓1800)#emp-mp
 !!!Vowels
 ɯw əw ɯw̃ əw̃|0|u o ũ õ
@@ -114,6 +112,33 @@ eɰ ɛɰ eɰ̃ ɛɰ̃||
 aj aw aj̃ aw̃||ɛ ɔ ɛ̃ ɔ̃
 !!!Consonants
 x ɣ|0|χ ʁ
+ɸ|0|f
+ʔ|0|disappears
+!!Modern Purrub → Poǩënu· (1800⁓1880)#mp-pp
+!!!Vowels
+ɯ|after s t d z|z̩
+z̩|after θ h|ɯ
+!!!Rimes
+i ɛ\+ ʁ|not before a vowel|jə ja
+u ɔ\||wə wa
+ɯ ə a\||ə
+i ɛ\+ l||ɯ ɤ
+u ɔ\||u ɔ
+ɯ ə a\||ɯ ə a
+i ɛ\+ ʑ||i e
+u ɔ\||y ø
+ɯ ə a\||i e ɛ
+i ɛ\+ v||y œ
+u ɔ\||u o
+ɯ ə a\||u o ɔ
+!!!Consonants
+p t t͜ɕ k|not before a vowel|disappears
+b d d͜ʑ g||
+any other consonant|before a consonant-initial word|
+ç χ h|before\i e ɛ j|ç
+|\y ø œ|çʷ
+|\ɯ ɤ ə ʌ|ç h h
+|\u o ɔ w|çʷ ʍ ʍ
 !!Old Sájura → Old Elkehen (-500⁓200)#os-oe
 !!!Vowels
 i e ɛ|long|ə̯i ej ɛə̯
