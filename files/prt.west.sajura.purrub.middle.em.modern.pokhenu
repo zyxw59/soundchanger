@@ -7,9 +7,12 @@ L = ˈɯ  ˈɤ  ˈu  ˈɔ  ˈɯ ˈə ˈa
 J = ˈi  ˈe  ˈy  ˈø  ˈi ˈe ˈɛ
 W = ˈy  ˈœ  ˈu  ˈo  ˈu ˈo ˈɔ
 
-Vo = i e ɛ u o ɔ ɯ ə a y ø œ ɤ ʌ l̩ z̩ w j
-Vn = ĩ ẽ ɛ̃ ũ õ ɔ̃ ɯ̃ ə̃ ã ỹ ø̃ œ̃ ɤ̃ ʌ̃
-Vi = {Vo} {Vn}
+Vf = i e ɛ j ĩ ẽ ɛ̃
+Vfr = y ø œ ỹ ø̃ œ̃
+Vm = ɯ ə ɤ ʌ ɯ̃ ə̃ ɤ̃ ʌ̃
+Vb = u o ɔ w ũ õ ɔ̃
+
+Vi = {Vf} {Vfr} {Vm} {Vb} l̩ z̩
 
 P = p t t͜ɕ k b d d͜ʑ g
 F = f θ s ɕ ç χ h v z
@@ -17,10 +20,6 @@ F = f θ s ɕ ç χ h v z
 CXH = ç χ h
 CHH = ç h h
 CHW = çʷ ʍ ʍ
-Vf = i e ɛ j
-Vfr = y ø œ
-Vm = ɯ ə ɤ ʌ
-Vb = u o ɔ w
 
 ɯ > z̩ / {Z}_
 z̩ > ɯ / {Ɯ}_
@@ -33,10 +32,10 @@ z̩ > ɯ / {Ɯ}_
 {P} > 0 ! _\s*ˈ?{Vi}
 {F} > 0 ! _\s*(ˈ?{Vi}|$)
 
-{CXH} > ç / _{Vf}
-{CXH} > çʷ / _{Vfr}
-{0:CXH} > {0:CHH} / _{Vm}
-{0:CXH} > {0:CHW} / _{Vb}
+{CXH} > ç / _ˈ?{Vf}
+{CXH} > çʷ / _ˈ?{Vfr}
+{0:CXH} > {0:CHH} / _ˈ?{Vm}
+{0:CXH} > {0:CHW} / _ˈ?{Vb}
 
 j > 0 / ç_
 w > 0 / ʍ|çʷ_
