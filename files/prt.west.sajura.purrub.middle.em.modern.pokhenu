@@ -7,7 +7,9 @@ L = ˈɯ  ˈɤ  ˈu  ˈɔ  ˈɯ ˈə ˈa
 J = ˈi  ˈe  ˈy  ˈø  ˈi ˈe ˈɛ
 W = ˈy  ˈœ  ˈu  ˈo  ˈu ˈo ˈɔ
 
-Vi = {V} i e ɛ u o ɔ ɯ ə a y ø œ ɤ ʌ l̩ z̩ w j
+Vo = i e ɛ u o ɔ ɯ ə a y ø œ ɤ ʌ l̩ z̩ w j
+Vn = ĩ ẽ ɛ̃ ũ õ ɔ̃ ɯ̃ ə̃ ã ỹ ø̃ œ̃ ɤ̃ ʌ̃
+Vi = {Vo} {Vn}
 
 P = p t t͜ɕ k b d d͜ʑ g
 F = f θ s ɕ ç χ h v z
