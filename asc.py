@@ -1,4 +1,4 @@
-#! /mit/sashacf/bin/python3.4
+#!./interpreter.sh
 
 from conlang.conlangApp import *
 from core import *

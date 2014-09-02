@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#!../interpreter.sh
 
 import argparse
 import cgitb

@@ -1,4 +1,4 @@
-#! /mit/sashacf/bin/python3.4
+#!./interpreter.sh
 
 import argparse
 import asc
@@ -29,10 +29,20 @@ if 'word' in form:
         debug = int(form['debug'].value)
     html = True
 else:
+    class DefaultAppend(argparse.Action):
+
+        def __call__(self, parser, namespace, values, option_string=None):
+            items = argparse._copy.copy(
+                argparse._ensure_value(namespace, self.dest, []))
+            if values == None:
+                values = ''
+            items.append(values)
+            setattr(namespace, self.dest, items)
+
     parser = argparse.ArgumentParser()
     parser.add_argument('--word', '-w')
-    parser.add_argument('--start', '-s', action='append')
-    parser.add_argument('--end', '-e', action='append')
+    parser.add_argument('--start', '-s', action=DefaultAppend, nargs='?')
+    parser.add_argument('--end', '-e', action=DefaultAppend, nargs='?')
     parser.add_argument('--debug', '-d', type=int, default=0)
     parser.add_argument('--html', '-t', action='store_true')
     args = parser.parse_args()
