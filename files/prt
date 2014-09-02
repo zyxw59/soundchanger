@@ -1,6 +1,0 @@
-Vou = u o e a
-Vos = ú ó é á
-Vp = ɨ ɘ ɜ a
-
-{0:Vou} > {0:Vp}
-{0:Vos} > ˈ{0:Vp}
