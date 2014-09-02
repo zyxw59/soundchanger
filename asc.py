@@ -1,4 +1,4 @@
-#!./interpreter.sh
+#!./.interpreter.sh
 
 from conlang.conlangApp import *
 from core import *

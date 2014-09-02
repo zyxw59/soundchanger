@@ -1,4 +1,4 @@
-#!./interpreter.sh
+#!./.interpreter.sh
 
 import cgitb
 import os

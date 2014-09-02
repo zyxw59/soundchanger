@@ -1,4 +1,4 @@
-#!./interpreter.sh
+#!./.interpreter.sh
 
 import argparse
 import asc
