@@ -1,5 +1,5 @@
 #!/bin/sh
 
-PYTHON=`cat .pypath`
+PYTHON=`cat ${0%/*}/.pypath`
 
 $PYTHON $@
