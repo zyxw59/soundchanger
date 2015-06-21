@@ -38,7 +38,7 @@ numPairs = 0;
 <body>
 <div class="container">
 <div class="top">
-<form id="main" action="app.py" target="app">
+<form id="main" action="cgiApp.py" target="app">
 <input id="word" name="word" class="form-control"/>
 <select id="debug" name="debug">''')
 for i in range(4):
