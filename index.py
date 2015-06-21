@@ -2,16 +2,17 @@
 
 import cgitb
 import os
-from core import *
+import sys
+from conlang import workers
 
 cgitb.enable()
 
-sys.stdout = Reencoder(sys.stdout)
+sys.stdout = workers.Reencoder(sys.stdout)
 
 print('Content-Type: text/html')
 print('')
 
-files = sorted([' '] + os.listdir(FILE_PATH + '/files/'))
+files = sorted([' '] + os.listdir(workers.FILE_PATH + '/files/'))
 fs = ['.' * f.count('.') + ('.' + f).rsplit('.', 1)[1] for f in files]
 
 with open('chars.txt', encoding='utf-8') as cf:
