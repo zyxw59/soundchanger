@@ -1,8 +1,0 @@
-Features:
-+ Searchable
-+ Customizable categories for Entry data
-+ Sortable by custom order
-- Link words to translations (huh?)
-+ Automatic generation of pronunciation from orthography (via sca)
-+ Automatic generation of orthography from pronunciation (via sca)
-+ Sound change applier

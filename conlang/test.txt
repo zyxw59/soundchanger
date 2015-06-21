@@ -1,6 +1,0 @@
-from soundChanger import applyRule
-cats = {'{V}': ['u', 'z', 'i', 'ɯ', 'a'],
-        '{F}': ['f', 's', 'ç', 'x', 'ħ']}
-rules = [{'from':
-cats = {'{V}': ['a', 'e', 'i', 'o', 'u']}
-applyRule('aciece', rule, cats)
