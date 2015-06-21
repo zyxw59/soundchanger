@@ -72,7 +72,7 @@ u ɔ||o
 !!!Consonants
 ʁʁ ll|intervocalically|χ ɫ
 v ʑ||w j
-z ɣ||disappears
+z ɣ ʔ||disappears
 vv zz ʑʑ ɣɣ||v z ʑ ɣ
 b d d͜ʑ g||
 bb dd dd͜ʑ gg||b d d͜ʑ g
@@ -131,6 +131,23 @@ u ɔ\||y ø
 i ɛ\+ v||y œ
 u ɔ\||u o
 ɯ ə a\||u o ɔ
+!!!Syllables
+i\+ ç χ h|initially and unstressed|ç
+y\||çʷ
+ɯ\||ç h h
+u\||çʷ ʍ ʍ
+i e ɛ\+ ɫ|before\j|i e ɛ
+\|\w|u o ɔ
+\|\a vowel|ɯɰ ɤɰ ʌɰ
+y ø œ\|\j|i e ɛ
+\|\w|u o ɔ
+\|\a vowel|uw ow ɔw
+u o ɔ\|\j|y ø œ
+\|\w|u o ɔ
+\|\a vowel|uw ow ɔw
+ɯ ə a\|\j|i e ɛ
+\|\w|u o ɔ
+\|\a vowel|ɯɰ əɰ aɰ
 !!!Consonants
 p t t͜ɕ k|not before a vowel|disappears
 b d d͜ʑ g||
@@ -139,6 +156,7 @@ any other consonant|before a consonant-initial word|
 |\y ø œ|çʷ
 |\ɯ ɤ ə ʌ|ç h h
 |\u o ɔ w|çʷ ʍ ʍ
+ʍ|before i e ɛ j y ø œ|çʷ
 w|after\çʷ ʍ|disappears
 j|\ç|
 !!Old Sájura → Old Elkehen (-500⁓200)#os-oe
@@ -292,6 +310,41 @@ m n ŋ|before m n ŋ|disappears
 |after ɡ or k|ŋw
 |after m, n, or ŋ|w
 |otherwise|w̃
+!!Proto-Eastern → Proto-Dnar (-1500⁓-750)#pe-pdnr
+!!!Vowels
+ɨ|unstressed|disappears
+any vowel + coda h|0|lengthens
+a|unstressed, short, not followed by coda j or w|ə
+!!!Vowel/Semivowel Sequences of any length
+j, i|adjacent to a vowel and unstressed\otherwise|j\i
+w, u|\|w\u
+w̃, ũ|\|w̃\ũ
+!!!Consonants
+b d ɡ z|initially|p t k s
+|finally|
+|in a cluster with a voiceless consonant|
+p t k s|between vowels or l r j w|b d ɡ z
+|in a cluster with a nasal|
+h|between vowels or l r j w|disappears
+|in a cluster with a nasal|ɦ
+0|between a word initial obstruent and a plosive|insertion of ɨ
+|between an obstruent and a word final plosive|
+!!Proto-Dnar → Old Dnar (-750⁓-500)#pdnr-odnr
+!!!Vowels
+e ɛ|long\following j|e æ
+|\otherwise|je jæ
+o õ ɔ ɔ̃|\following w|o õ ɒ ɒ̃
+|\otherwise|wo wõ wɒ wɒ̃
+i u ũ|long|əj əw əw̃
+ɛ ɔ|short|æ ɒ
+!!!Consonants
+h|between consonants|ɨ
+ʔ|after a consonant|ɨʔ
+ʔp ʔt ʔk ʔs|0|p’ t’ k’ t͜s
+r|0|ɹ
+əɹ əl ɨj ɨw|0|ɹ̩ l̩ i u
+ɹ l j w|not adjacent to a vowel|
+jj ww|0|j w
 !!Pre-Proto-Fluf → Proto-Fluf#ppf-pf
 !!!Vowels
 ə|after a labial\before a labial|u
@@ -366,6 +419,11 @@ m n ŋ|before m n ŋ|disappears
 |\before a velar|ɯ
 |\before a glottal|ə
 |\before a finally|ə
+!!!Harmony
+i ɯ e ɤ ə\y u ø o|with last vowel\i y z̩|i\y
+\|\e ø|e\ø
+i ɯ e ɤ\y u ø o ə|\ɯ u l̩|ɯ\u
+\|\ɤ o a|ɤ\o
 !!!Consonants
 β ɣ|before or after\u ɯ|disappears
 ʕ|\ɑ|
@@ -373,12 +431,6 @@ z|\z̩|
 l|\l̩|
 ʝ ʝʷ|\i y|
 h|\ə|
-!!Fluf Harmony#pf-h
-!!!Vowels
-i ɯ e ɤ ə\y u ø o|with last vowel\i y z̩|i\y
-\|\e ø|e\ø
-i ɯ e ɤ\y u ø o ə|\ɯ u l̩|ɯ\u
-\|\ɤ o a|ɤ\o
 !!Proto-Fluf → Iealkh#pf-ilk
 !!!Vowels
 ɑ|0|a
