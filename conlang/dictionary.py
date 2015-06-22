@@ -1,5 +1,6 @@
 import regex
 import collections
+import json
 import os
 from . import entryFormat, soundChanger, soundChangeApp
 
