@@ -92,14 +92,14 @@ print('''\
 <link rel=stylesheet href=''' + args.style + '''>
 </head>
 <body>
-<h1>''' + title + '''</h1>
 <ul id=toc>''')
 
 for i in range(len(table)):
     if i in h2:
         print('<li><a href="#' + h2[i][1] + '">' + h2[i][0] + '</a></li>')
 
-print('</ul>')
+print('''</ul>
+<h1>''' + title + '''</h1>''')
 
 for i in range(len(table)):
     if i in h2:

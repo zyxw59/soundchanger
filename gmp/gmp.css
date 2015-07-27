@@ -12,6 +12,9 @@ a:hover{
 html {
   background-color: #096;
 }
+h1 {
+  width: 50%;
+}
 table, th, td {
   border: 2px solid #f60;
   border-collapse: collapse;
@@ -37,8 +40,11 @@ th {
 ul {
   border: 2px solid #f60;
   background-color: #f93;
+  height: 100%;
   left: 50%;
-  position: fixed;
   list-style: disc;
+  margin: 0;
+  overflow-y: scroll;
+  position: fixed;
   width: 50%;
 }
