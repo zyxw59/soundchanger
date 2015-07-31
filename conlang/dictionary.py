@@ -323,12 +323,13 @@ class Entry(collections.UserList):
         if pat is None:
             self.pat = r'$word$pron$pos$cl$de'
             if pat_args == {}:
-                self.pat_args = {}
-                self.pat_args['pron'] = ' /$pron/'
-                self.pat_args['pos'] = ' - $pos'
-                self.pat_args['cl'] = ' ($cl$subcl)'
-                self.pat_args['subcl'] = '.$subcl'
-                self.pat_args['de'] = ': $de'
+                self.pat_args = {
+                    'pron': '/$pron/',
+                    'pos': ' - $pos',
+                    'cl': ' ($cl$subcl)',
+                    'subcl': '.$subcl',
+                    'de': ': $de'
+                }
             else:
                 self.pat_args = pat_args
         else:
@@ -534,10 +535,17 @@ def sort_key(alpha):
             Characters or sequences of characters to be ignored in sorting
             (for example, combining diacritics) should be assigned to a value
             of None.
+            Alternatively, an iterable, with the characters or sequences of
+            characters in the order they should be sorted. This does not allow
+            for ignoring characters or sequences of characters, or sorting
+            multiple different characters or sequences of characters at the
+            same index.
 
     Returns:
         A function, which when applied to a string, generates a sort key.
     """
+    if not isinstance(alpha, dict):
+        alpha = {alpha[i]: i for i in range(len(alpha))
     a = sorted(alpha.keys(), key=lambda x: -len(x))
 
     def key(word):

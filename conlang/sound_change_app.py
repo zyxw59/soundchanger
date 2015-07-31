@@ -1,7 +1,6 @@
 import os
 from . import sound_changer, workers
 
-#TODO(sashacf): Write proper docstrings
 def parse_rule(l, cats):
     """Parses a sound change rule or category.
 
