@@ -2,7 +2,7 @@ import collections
 import os
 import json
 import regex
-from . import entry_format, sound_changer, sound_change_app
+from soundchanger.conlang import entry_format, sound_changer, sound_change_app
 
 
 def custom_encode(obj):
@@ -545,7 +545,7 @@ def sort_key(alpha):
         A function, which when applied to a string, generates a sort key.
     """
     if not isinstance(alpha, dict):
-        alpha = {alpha[i]: i for i in range(len(alpha))
+        alpha = {alpha[i]: i for i in range(len(alpha))}
     a = sorted(alpha.keys(), key=lambda x: -len(x))
 
     def key(word):

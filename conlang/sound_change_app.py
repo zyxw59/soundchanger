@@ -1,10 +1,10 @@
 import os
-from . import sound_changer, workers
+from soundchanger.conlang import sound_changer, workers
 
 def parse_rule(l, cats):
     """Parses a sound change rule or category.
 
-    Given a line l with the format 'a > b / c_d ! e_f' produces a dict of
+    Given a line l with the format 'a > b / c_d ! e_f', produces a dict of
     the form
     {
         'from': 'a',
@@ -14,6 +14,8 @@ def parse_rule(l, cats):
         'unbefore': 'e',
         'unafter': 'f'
     }.
+    If l is of the form 'a > b / c_d ! e_f | g > h / i_j ! k_l', the output is
+    a list of the '|' delimited rules.
     If l is of the form 'a = b c d', the output is a dict of the form
     {
         'cat_name': 'a',
@@ -25,9 +27,11 @@ def parse_rule(l, cats):
         cats: The dict of categories to use in the rule.
 
     Returns:
-        A dict representing either a sound change rule or category.
+        A dict representing either a sound change rule or category, or a list
+        of several sound changes.
     """
-    word_boundary = r'((?<=^|\s)|(?=$|\s))'
+    word_start = r'(?<=^|\s)'
+    word_end = r'(?=$|\s)'
     out = {}
     if len(l.split(' = ')) == 2:
         # If there is an equals sign, it's a category
@@ -38,9 +42,12 @@ def parse_rule(l, cats):
             category = category.replace('{' + c + '}', ' '.join(cats[c]))
         out['category'] = category.split()
     else:
+        if len(l.split(' | ')) > 1:
+            # It's a list of sound changes
+            return [parse_rule(ll, cats) for ll in l.split(' | ')]
         # Otherwise, it's a sound change rule
         try:
-            # Attempt to set 'from' and 'to'. If there isn't a ' > ', it will 
+            # Attempt to set 'from' and 'to'. If there isn't a ' > ', it will
             # raise an IndexError when trying to set 'to', so 'from' will be
             # set, but 'to' will not. This could be used when parsing a rule to
             # be used as a search pattern, and not as a sound change. Need to
@@ -49,9 +56,7 @@ def parse_rule(l, cats):
             # Treat '0' like ''
             if out['from'] == '0':
                 out['from'] = ''
-            out['from'] = out['from'].replace('#', word_boundary)
             out['to'] = l.split(' > ')[1].split(' / ')[0].split(' ! ')[0]
-            out['to'].replace('#', word_boundary)
             # Treat '0' like ''
             if out['to'] == '0':
                 out['to'] = ''
@@ -63,9 +68,9 @@ def parse_rule(l, cats):
             # a '_', it will raise an IndexError when trying to set 'after', so
             # 'before' will be set, but 'after' will not.
             out['before'] = l.split(' / ')[1].split('_')[0].split(' ! ')[0]
-            out['before'] = out['before'].replace('#', word_boundary)
+            out['before'] = out['before'].replace('#', word_start)
             out['after'] = l.split(' / ')[1].split('_')[1].split(' ! ')[0]
-            out['after'] = out['after'].replace('#', word_boundary)
+            out['after'] = out['after'].replace('#', word_end)
         except IndexError:
             pass
         try:
@@ -73,9 +78,9 @@ def parse_rule(l, cats):
             # for 'before' and 'after'. Note that the negative conditions must
             # come after the positive conditions, if both exist.
             out['unbefore'] = l.split(' ! ')[1].split('_')[0]
-            out['unbefore'] = out['unbefore'].replace('#', word_boundary)
+            out['unbefore'] = out['unbefore'].replace('#', word_start)
             out['unafter'] = l.split(' ! ')[1].split('_')[1]
-            out['unafter'] = out['unafter'].replace('#', word_boundary)
+            out['unafter'] = out['unafter'].replace('#', word_start)
         except IndexError:
             pass
     return out
@@ -100,7 +105,10 @@ def apply_rule_list(word, lines):
             cats[rc['cat_name']] = rc['category']
             debug.append(l)
         else:
-            word = sound_changer.apply_rule(word, rc, cats)
+            if 'from' in rc:
+                word = sound_changer.apply_rule(word, rc, cats)
+            else:
+                word = sound_changer.apply_alternate_rules(word, rc, cats)
             debug.append(l + ' ' + word)
     return word, '\n'.join(debug)
 

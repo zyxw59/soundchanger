@@ -3,7 +3,7 @@
 import cgitb
 import os
 import sys
-from conlang import workers
+from soundchanger.conlang import workers
 
 def main():
     cgitb.enable()

@@ -1,5 +1,5 @@
 import regex
-from .workers import slice_replace
+from soundchanger.conlang import workers
 
 var_matcher = lambda s: r'(?<!\$)(?:\$\$)*\$(' + s + ')'
 var_match = regex.compile(var_matcher(r'\w+'))
@@ -28,14 +28,15 @@ def match(pat, pat_args):
         m = regex.search(var_matcher(f), args[f])
         while m is not None:
             sp = (m.start(1) - 1, m.end(1))
-            args[f] = slice_replace(args[f], sp, var_group(f))
+            args[f] = workers.slice_replace(args[f], sp, var_group(f))
             m = regex.search(var_matcher(f), args[f])
     pat = '^' + regex.escape(pat, True).replace(r'\$', '$') + '$'
     m = var_match.search(pat)
     while m is not None:
         sp = (m.start(1) -1, m.end(1))
         f = m.group(1)
-        pat = slice_replace(pat, sp, '(' + args.get(f, var_group(f)) + ')?')
+        pat = workers.slice_replace(pat, sp,
+                                    '({})?'.format(args.get(f, var_group(f))))
         m = var_match.search(pat)
     pat = pat.replace(' ', r'\s+')
     return regex.compile(pat)
@@ -58,7 +59,7 @@ def output(entry, pat, pat_args):
         m = regex.search(var_matcher(f), args[f])
         while m is not None:
             sp = (m.start(1) - 1, m.end(1))
-            args[f] = slice_replace(args[f], sp, entry.get(f) or '')
+            args[f] = workers.slice_replace(args[f], sp, entry.get(f) or '')
             m = regex.search(var_matcher(f), args[f])
     out = pat
     m = var_match.search(out)
@@ -66,9 +67,9 @@ def output(entry, pat, pat_args):
         sp = (m.start(1) -1, m.end(1))
         f = m.group(1)
         if f in entry and entry[f] is not None:
-            out = slice_replace(out, sp, args.get(f, entry[f]))
+            out = workers.slice_replace(out, sp, args.get(f, entry[f]))
         else:
-            out = slice_replace(out, sp, '')
+            out = workers.slice_replace(out, sp, '')
         m = var_match.search(out)
     return out
 

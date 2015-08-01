@@ -1,4 +1,5 @@
 import collections
+from soundchanger.conlang import sound_change_app
 
 class DotDict(dict):
     """A recursive dict whose entries can be accessed using keys with '.'"""
@@ -80,6 +81,7 @@ class OrderedDotDict(DotDict, collections.OrderedDict):
 
 
 class Inflection(OrderedDotDict):
+    """A table of functions that inflect a word."""
 
     def __call__(self, entry):
         """Inflects a word.
@@ -88,10 +90,133 @@ class Inflection(OrderedDotDict):
             entry: The word (as a dictionary.Entry) to inflect.
 
         Returns:
-            A dict of the inflected forms of the word.
+            An InflectionTable of the inflected forms of the word.
         """
         return InflectionTable((k, v(entry)) for k, v in self.items())
 
 
+class InflectionRuleTable(Inflection):
+    """A table of rules to inflect a word.
+
+    Attributes:
+        common: A list of sound changes and categories to be applied for every
+            inflection.
+        field: The field of entries to apply the rules to. Defaults to 'word'.
+    """
+
+    def __init__(self, *args, **kwargs):
+        self.common = []
+        self.field = 'word'
+        super().__init__(*args, **kwargs)
+
+    def __setitem__(self, k, v):
+        """irt.__setitem__(k, v) <==> irt[k] = v"""
+        if '.' in k:
+            k = k.split('.', 1)
+            if k[0] not in self:
+                self[k[0]] = type(self)()
+            self[k[0]][k[1]] = v
+        else:
+            if isinstance(v, dict):
+                super().__setitem__(k, type(self)(v))
+            else:
+                super().__setitem__(k, InflectionRule(v, self.field))
+            self[k].common = self.common
+            self[k].field = self.field
+
+    def formatted(self, *sep):
+        """Produces a display of the keys of the table.
+
+        Args:
+            *sep: (Optional) The characters to delimit elements of the table.
+                Each argument will be used for one level of the table, and the
+                last argument will be used for all following levels. For
+                example, if the only argument is '\t', then all levels will use
+                '\t' to delimit their elements. If the first argument is '\n',
+                and the second argument is '\t', then the top level will use
+                '\n' to delimit it's elements, and all following levels will
+                use '\t'. Defaults to ('\n', '\t')
+
+        Returns:
+            A string containing the formatted table of keys.
+        """
+        if not sep:
+            sep = ('\n', '\t')
+        elif not sep[1:]:
+            sep *= 2
+        out = []
+        for k in self:
+            try:
+                out.append(k + sep[1] + self[k].formatted(*sep[1:]))
+            except AttributeError:
+                out.append(k)
+        return sep[0].join(out)
+
+
 class InflectionTable(OrderedDotDict):
-    pass
+    """A table of inflected forms of a word."""
+
+    def formatted(self, *sep):
+        """Produces a display of the table.
+
+        Args:
+            *sep: (Optional) The characters to delimit elements of the table.
+                Each argument will be used for one level of the table, and the
+                last argument will be used for all following levels. For
+                example, if the only argument is '\t', then all levels will use
+                '\t' to delimit their elements. If the first argument is '\n',
+                and the second argument is '\t', then the top level will use
+                '\n' to delimit it's elements, and all following levels will
+                use '\t'. Defaults to ('\n', '\t')
+
+        Returns:
+            A string containing the formatted table.
+        """
+        if not sep:
+            sep = ('\n', '\t')
+        elif not sep[1:]:
+            sep *= 2
+        out = []
+        for k in self:
+            try:
+                out.append(self[k].formatted(*sep[1:]))
+            except AttributeError:
+                out.append(self[k])
+        return sep[0].join(out)
+
+
+class InflectionRule(list):
+    """A callable object that inflects a function based on sound change rules.
+
+    Attributes:
+        common: Additional rules to apply before rules.
+        field: The field of an entry to apply the rules to.
+        rules: The list of rules to apply.
+    """
+    def __init__(self, rules=None, field='word'):
+        """Initializes an InflectionRule object.
+
+        Args:
+            rules: (Optional) The list of rules to apply.
+            field: (Optional) The field of an entry to apply the rules to.
+                Defaults to 'word'.
+        """
+        super().__init__(rules)
+        self.field = field
+        self.common = []
+
+    def __call__(self, entry):
+        """Inflects a dictionary entry.
+
+        Args:
+            entry: The entry to inflect. Alternatively, a string to inflect.
+
+        Returns:
+            The inflected form of the word.
+        """
+        rules = self.common + self
+        try:
+            word = entry[self.field]
+        except TypeError:
+            word = entry
+        return sound_change_app.apply_rule_list(word, rules)[0]

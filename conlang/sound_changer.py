@@ -1,5 +1,5 @@
 import regex
-from . import workers
+from soundchanger.conlang import workers
 
 cat_matcher = regex.compile(r'\{(\d*):?(\w*)\}')
 
@@ -161,7 +161,23 @@ def apply_rule(word, rule, cats):
         The result of the sound change.
     """
     matches, cat_index = find_matches(word, rule, cats)
-    if len(matches) == 0:
+    return apply_to_matches(word, rule['to'], cats, matches, cat_index)
+
+
+def apply_to_matches(word, to, cats, matches, cat_index):
+    """Applies a sound change to a word, after matches have been found.
+
+    Args:
+        word: The word to apply the rule to.
+        to: The 'to' field of the rule.
+        cats: The dict of categories to use in replacement.
+        matches: The list of matches.
+        cat_index: The list of numbered category indices for the matches.
+
+    Returns:
+        The result of the sound change.
+    """
+    if not matches:
         # there were no matches, so no changes need to be applied
         return word
     # starting from the end of the string, replace each match with the output
@@ -169,8 +185,26 @@ def apply_rule(word, rule, cats):
     for match, indices in zip(reversed(matches), reversed(cat_index)):
         # produce the appropriate replacement, given numbered categories, and
         # insert it into the word
-        word = workers.slice_replace(word, match.span(),
-                cat_matcher.sub(lambda m: to_cat_replace(m, cats, indices),
-                    rule['to']))
+        word = workers.slice_replace(
+            word, match.span(),
+            cat_matcher.sub(lambda m: to_cat_replace(m, cats, indices), to))
     return word
 
+
+def apply_alternate_rules(word, rules, cats):
+    """Applies the first matching rule to a word.
+
+    Args:
+        word: The word to apply the rule to.
+        rules: A list of rules to attempt to apply. The first one that matches
+            the word is applied.
+        cats: The dict of categories to use in search and replacement.
+
+    Returns:
+        The result of the first matching rule. If none of the rules match, the
+        word is returned unchanged.
+    """
+    for rule in rules:
+        matches, cat_index = sound_changer.find_matches(word, rc, cats)
+        if matches:
+            return apply_to_matches(word, rule['to'], cats, matches, cat_index)

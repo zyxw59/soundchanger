@@ -5,7 +5,7 @@ import cgi
 import cgitb
 import os
 import sys
-from conlang import sound_change_app, workers
+from soundchanger.conlang import sound_change_app, workers
 
 
 FILE_PATH = os.path.abspath(os.path.dirname(sys.argv[0]))
