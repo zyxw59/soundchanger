@@ -5,7 +5,18 @@ var_matcher = lambda s: r'(?<!\$)(?:\$\$)*\$(' + s + ')'
 var_match = regex.compile(var_matcher(r'\w+'))
 var_group = lambda s: '(?P<' + s + '>.*?)'
 
-def match(pat, pat_args):
+default_pat = '$word$pron$pos$cl$de'
+default_pat_args = {
+    'pron': '/$pron/',
+    'pos': ' - $pos',
+    'cl': ' ($cl$subcl)',
+    'subcl': '.$subcl',
+    'de': ': $de'
+}
+
+
+
+def match(pat=None, pat_args=None):
     """Generates a regular expression to match a dictionary entry.
 
     In pat, '$foo' matches the contents of pat_args['foo'] or nothing, if
@@ -14,14 +25,27 @@ def match(pat, pat_args):
     be in pat.
 
     Args:
-        pat: The format of the entry.
-        pat_args: The expansions for variables.
+        pat: (Optional) The format of the entry. Defaults to
+            '$word$pron$pos$cl$de'.
+        pat_args: (Optional) The expansions for variables. If pat is
+            unspecified, defaults to {
+                'pron': '/$pron/',
+                'pos': ' - $pos',
+                'cl': ' ($cl$subcl)',
+                'subcl': '.$subcl',
+                'de': ': $de'
+            }, otherwise, defaults to {}
 
     Returns:
         A regular expression which will match a dictionary entry in the
         specified format. Fields mentioned in the pattern with '$' can be
         accessed as named capture groups of the match object.
     """
+    if pat is None:
+        pat = default_pat
+        if pat_args is None:
+            pat_args = default_pat_args
+    pat_args = pat_args or {}
     args = {}
     for f in pat_args:
         args[f] = regex.escape(pat_args[f], True).replace(r'\$', '$')
@@ -50,9 +74,25 @@ def output(entry, pat, pat_args):
 
     Args:
         entry: The dictionary entry to be stringified.
-        pat: The format to use.
-        pat_args: The expansions for variables.
+        pat: (Optional) The format of the entry. Defaults to
+            '$word$pron$pos$cl$de'.
+        pat_args: (Optional) The expansions for variables. If pat is
+            unspecified, defaults to {
+                'pron': '/$pron/',
+                'pos': ' - $pos',
+                'cl': ' ($cl$subcl)',
+                'subcl': '.$subcl',
+                'de': ': $de'
+            }, otherwise, defaults to {}
+
+    Returns:
+        The entry as a string.
     """
+    if pat is None:
+        pat = default_pat
+        if pat_args is None:
+            pat_args = default_pat_args
+    pat_args = pat_args or {}
     args = {}
     for f in pat_args:
         args[f] = pat_args[f]

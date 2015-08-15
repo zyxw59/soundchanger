@@ -99,38 +99,33 @@ class Dictionary(collections.UserList):
             return json.load(f, object_hook=class_hook)
 
     def __add__(self, d):
-        return Dictionary(super().__add__(d), self.alpha, self.pat,
+        return type(self)(super().__add__(d), self.alpha, self.pat,
                 self.pat_args)
 
     def __getitem__(self, i):
         if isinstance(i, slice):
-            return Dictionary(super().__getitem__(i),
+            return type(self)(super().__getitem__(i),
                     self.alpha, self.pat, self.pat_args)
         elif isinstance(i, str):
             return StringList(self, i)
         elif isinstance(i, tuple):
-            return Dictionary([e[i] for e in self], self.alpha, self.pat,
+            return type(self)([e[i] for e in self], self.alpha, self.pat,
                     self.pat_args)
         else:
             return super().__getitem__(i)
 
     def __mul__(self, n):
-        return Dictionary(super().__mul__(n), self.alpha, self.pat,
+        return type(self)(super().__mul__(n), self.alpha, self.pat,
                 self.pat_args)
 
     def __setitem__(self, index, data):
         if isinstance(index, str):
+            # data is a list of strings, and index is a field
             for e in range(len(self)):
                 self[e][index] = data[e]
         else:
-            try:
-                for f in range(len(index)):
-                    try:
-                        self.__setitem__(index[f], data[f])
-                    except TypeError:
-                        self.__setitem__(index[f], data[index[f]])
-            except TypeError:
-                super().__setitem__(index, data)
+            # index is int or slice
+            super().__setitem__(index, data)
 
     def __str__(self):
         return self.format_string()
@@ -215,7 +210,7 @@ class Dictionary(collections.UserList):
         Returns:
             A Dictionary containing all the Entries that match the string.
         """
-        out = Dictionary(alpha=self.alpha, pat=self.pat,
+        out = type(self)(alpha=self.alpha, pat=self.pat,
                          pat_args=self.pat_args)
         for e in self:
             if e.check(s, field, cats):
@@ -319,7 +314,9 @@ class Entry(collections.UserList):
             Entry, using the format specified in the entry_format module.
     """
 
-    def __init__(self, e=[], pat=None, pat_args={}):
+    def __init__(self, e=None, pat=None, pat_args={}):
+        if e is None:
+            e = []
         if pat is None:
             self.pat = r'$word$pron$pos$cl$de'
             if pat_args == {}:
@@ -449,7 +446,7 @@ class Entry(collections.UserList):
         return entry_format.output(self, pat, pat_args)
 
     def get(self, key, default=None):
-        return self.lookup.get(key, default)
+        return self[key] if key in self else default
 
     def items(self):
         return self.data
