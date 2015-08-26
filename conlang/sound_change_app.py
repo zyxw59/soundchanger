@@ -1,5 +1,6 @@
 import os
-from soundchanger.conlang import sound_changer, workers
+from os import path
+from soundchanger.conlang import cache, sound_changer, workers
 
 def parse_rule(l, cats):
     """Parses a sound change rule or category.
@@ -23,7 +24,7 @@ def parse_rule(l, cats):
     }. Category names in curly brackets are expanded.
 
     Args:
-        l: The line of text to parse
+        l: The line of text to parse.
         cats: The dict of categories to use in the rule.
 
     Returns:
@@ -100,7 +101,11 @@ def apply_rule_list(word, lines):
     cats = {}
     debug = []
     for l in lines:
-        rc = parse_rule(l, cats)
+        try:
+            rc = parse_rule(l, cats)
+        except AttributeError:
+            # l wasn't a string, but rather a dict
+            rc = l
         if 'cat_name' in rc:
             cats[rc['cat_name']] = rc['category']
             debug.append(l)
@@ -113,24 +118,7 @@ def apply_rule_list(word, lines):
     return word, '\n'.join(debug)
 
 
-def load_text_file(filename):
-    """Loads a text file as a list of lines.
-
-    Args:
-        filename: The path to the file.
-
-    Returns:
-        A list of the lines of the file, leaving out blank lines, and lines
-        starting with '//'.
-    """
-    with open(os.path.expanduser(filename), encoding='utf-8') as f:
-        return [l.strip('\n') for l in f if l.strip() and l[:1] != '//']
-
-
-lf = lambda f: load_text_file(workers.FILE_PATH + '/files/' + f)
-
-
-def apply_rule_files(word, pairs, debug=0):
+def apply_rule_files(word, pairs, debug=0, file_loader=workers.lf):
     """Applies a set of sound change files.
 
     Args:
@@ -143,9 +131,11 @@ def apply_rule_files(word, pairs, debug=0):
             pairs.
         debug: (Optional) The level of debug info to be included in the output.
             0 (Default): Don't include anything
-            1: Include the word at the endpoint of each pair
-            2: Include the word at the end of each file
-            3: Include the full debug output from apply_rule_list
+            1: Include the word at the end of each file
+            2: Include the full debug output from apply_rule_list
+        file_loader: (Optional) A function that accepts filenames and returns
+            lists of sound changes. Defaults to loading the file from
+            wokers.FILE_PATH + '/files/'
 
     Returns:
         A tuple of the final result of the sound changes, and the debug info.
@@ -155,25 +145,82 @@ def apply_rule_files(word, pairs, debug=0):
     # applied, start by adding the initial language and word.
     if pairs and debug:
         db.append(pairs[0][0] + ': ' + word)
-    for p in pairs:
-        cur, end = p
-        if p[1][0] != '.':
-            if p[1].startswith(p[0]):
-                end = ('.' if not cur else '') + end[len(cur):]
-            else:
-                raise Exception('{0[1]} does not start with {0[0]}'.format(p))
-        while end:
-            cur = (cur and cur + '.') + end.split('.')[1]
-            try:
-                end = '.' + end.split('.', 2)[2]
-            except IndexError:
-                end = ''
-            word, steps = apply_rule_list(word, lf(cur))
-            if debug > 2:
-                db.append(steps)
-            if debug > 1:
-                db.append(cur + ': ' + word)
-        if debug == 1:
-            db.append(p[1] + ': ' + word)
+    for cur in pair_iterator(pairs):
+        word, steps = apply_rule_list(word, file_loader(cur))
+        if debug > 1:
+            db.append(steps)
+        if debug:
+            db.append(cur + ': ' + word)
     return word, '\n'.join(db)
 
+
+class SoundChangeCache(cache.ModifiedCache):
+    """A sound change cache.
+
+    """
+    def __init__(self, max_size=-1, file_cache_max_size=-1):
+        """Initializes the cache.
+
+        Args:
+            max_size: (Optional) The maximum number of entries in the cache. If
+                set to -1 (default), the cache has no limit.
+            file_cache_max_size: (Optional) The maximum number of entries in
+                the file cache. If set to -1 (default), the file cache has no
+                limit.
+        """
+        self.file_cache = workers.FileCache(file_cache_max_size)
+        funct = lambda word, pairs: apply_rule_files(word, pairs, 0,
+                                                     self.file_cache)[0]
+        mod = lambda word, pairs: modified(pairs)
+        super().__init__(funct, mod, max_size)
+
+
+def modified(pairs):
+    """Returns the latest modification time from any file in a list of pairs.
+
+    Args:
+        pairs: The list of pairs to check, in the same format as
+            apply_sound_change_files.
+
+    Returns:
+        The latest modification time from any file in the chain.
+    """
+    # gets the modification time from a file
+    key = lambda cur: path.getmtime(workers.path_to_file(cur))
+    # get max modification time from all the files
+    return max(map(key, pair_iterator(pairs)))
+
+
+def pair_iterator(pairs):
+    """Iterates through a list of pairs.
+
+    Args:
+        pairs: The list of pairs to iterate through, in the same format as
+            apply_sound_change_files.
+
+    Yields:
+        For each pair, each step on the way from the start to the end of that
+        pair.
+    """
+    for p in pairs:
+        cur, end = p
+        if end[0] != '.':
+            # if end is not relative
+            if end.startswith(cur):
+                # prepend '.' if cur is '', then add everything in end that
+                # comes after cur, including the '.'
+                end = ('.' if not cur else '') + end[len(cur):]
+            else:
+                raise Exception('{} does not start with {}'.format(end, cur))
+        while end:
+            # if cur != '', append '.', then append the first segment of end,
+            # which is the segment *after* the initial '.', hence [1]
+            cur = (cur and cur + '.') + end.split('.')[1]
+            try:
+                # '.' + the remaining portions of end (i.e. those after the
+                # second '.')
+                end = '.' + end.split('.', 2)[2]
+            except IndexError:
+                # there was nothing left.
+                end = ''
+            yield cur

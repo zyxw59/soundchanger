@@ -3,7 +3,8 @@ import itertools
 import os
 import json
 import regex
-from soundchanger.conlang import entry_format, sound_changer, sound_change_app
+from soundchanger.conlang import (cache, entry_format, sound_changer,
+                                  sound_change_app)
 
 
 def custom_encode(obj):
@@ -69,12 +70,12 @@ class DictionaryMethods(object):
         for e in self:
             # sound_change_app.apply_rule_list returns a tuple of the word and
             # the debug lines, but we only want the word
-            e[field2] = sound_change_app.apply_rule_list(e[field1], lines)[0]
+            e[field2] = sound_change_app.apply_rule_list(e[field1], lines)
 
     def apply_rule_files(self, pairs, field1='pron', field2=None):
         """Applies a set of sound change files.
 
-        Applies the specified sound change files specified by pairs (as in
+        Applies the set of sound change files specified by pairs (as in
         sound_change_app.apply_rule_files) to each Entry in the Dictionary.
 
         Args:
@@ -90,9 +91,7 @@ class DictionaryMethods(object):
         if field2 is None:
             field2 = field1
         for e in self:
-            # sound_change_app.apply_rule_files returns a tuple of the word and
-            # the debug lines, but we only want the word
-            e[field2] = sound_change_app.apply_rule_files(e[field1], pairs)[0]
+            e[field2] = self.cache(e[field1], pairs)[0]
 
     def format_string(self, pat=None, pat_args=None):
         """Formats the Dictionary using a specified pattern.
@@ -216,7 +215,8 @@ class Dictionary(DictionaryMethods, collections.UserList):
         auto_fields: Fields to be automatically generated for each Entry.
             A dict whose keys are the fields to be automatically generated, and
             whose values are tuples of the field from which it is generated,
-            and a list that can be passed to sound_change_app.apply_rule_files.
+            and a tuple that can be passed to
+            sound_change_app.apply_rule_files.
     """
 
     def __init__(self, l=None, alpha=None, pat=None, pat_args=None,
@@ -233,7 +233,7 @@ class Dictionary(DictionaryMethods, collections.UserList):
             auto_fields: Fields to be automatically generated for each Entry.
                 Should be a dict whose keys are the fields to be automatically
                 generated, and whose values are tuples of the field from which
-                it is generated, and a list that can be passed to
+                it is generated, and a tuple that can be passed to
                 sound_change_app.apply_rule_files.
         """
         if l is None:
@@ -242,6 +242,10 @@ class Dictionary(DictionaryMethods, collections.UserList):
         self.pat = pat
         self.pat_args = pat_args
         self.auto_fields = auto_fields or {}
+        for f in self.auto_fields:
+            pairs = self.auto_fields[f][1]
+            self.auto_fields[f][1] = tuple(tuple(p) for p in pairs)
+        self.cache = sound_change_app.SoundChangeCache()
         super().__init__()
         for e in l:
             self.append(e)
@@ -333,7 +337,7 @@ class DictionaryView(DictionaryMethods, collections.MappingView,
     def __getattr__(self, attr):
         # Get these from the parent, but only if they haven't been set manually
         # __getattr__ is only called if attr isn't found normally in the object
-        if attr in ['alpha', 'pat', 'pat_args']:
+        if attr in ['alpha', 'pat', 'pat_args', 'auto_fields']:
             return self._mapping.__getattr__(attr)
         # If __getattr__ is being called, attr wasn't found, so if it's not one
         # of the above,
@@ -400,9 +404,7 @@ class Entry(collections.UserDict):
         if key in self.data:
             return super().__getitem__(key)
         src, pairs = self.parent.auto_fields[key]
-        # sound_change_app.apply_rule_files produces a tuple of the word and
-        # the debug lines, we just want the word.
-        return sound_change_app.apply_rule_files(self[src], pairs)[0]
+        return self.parent.cache(self[src], pairs)
 
     def __iter__(self):
         yield from self.data.keys() | self.parent.auto_fields.keys()

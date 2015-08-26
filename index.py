@@ -2,6 +2,7 @@
 
 import cgitb
 import os
+from os import path
 import sys
 from soundchanger.conlang import workers
 
@@ -13,7 +14,7 @@ def main():
     print('Content-Type: text/html')
     print('')
 
-    files = sorted([' '] + os.listdir(workers.FILE_PATH + '/files/'))
+    files = sorted([' '] + os.listdir(path.join(workers.FILE_PATH, 'files')))
     fs = ['.' * f.count('.') + ('.' + f).rsplit('.', 1)[1] for f in files]
 
     with open('chars.txt', encoding='utf-8') as cf:

@@ -1,6 +1,6 @@
-import cgitb
+from os import path
 import sys
-import os
+from soundchanger.conlang import cache
 
 FILE_PATH = '/mit/sashacf/web_scripts/soundchanger'
 
@@ -22,6 +22,21 @@ def add_pad(l, n, item):
         l[n] = item
 
 
+class FileCache(cache.ModifiedCache):
+    """A cache for files.
+
+    """
+    def __init__(self, max_size=-1):
+        """Initializes the cache.
+
+        Args:
+            max_size: (Optional) The maximum number of entries in the cache. If
+                set to -1 (default), the cache has no limit.
+        """
+        super().__init__(lf, lambda f: path.getmtime(path_to_file(f)),
+                         max_size)
+
+
 def flip_dict(d):
     """Returns a dict with values and keys reversed.
 
@@ -33,6 +48,30 @@ def flip_dict(d):
         are the corresponding keys.
     """
     return {v: k for k, v in d.items()}
+
+
+def load_text_file(filename):
+    """Loads a text file as a list of lines.
+
+    Args:
+        filename: The path to the file.
+
+    Returns:
+        A list of the lines of the file, leaving out blank lines, and lines
+        starting with '//'.
+    """
+    with open(path.expanduser(filename), encoding='utf-8') as f:
+        return [l.strip('\n') for l in f if l.strip() and l[:1] != '//']
+
+
+def lf(filename):
+    """Shorthand for load_text_file(path_to_file(filename))."""
+    return load_text_file(path_to_file(filename))
+
+
+def path_to_file(filename):
+    """Returns a file path prefixed with FILE_PATH + '/files/'."""
+    return path.join(FILE_PATH, 'files', filename)
 
 
 class Reencoder():
@@ -62,7 +101,9 @@ class Reencoder():
         return self.stream.flush()
 
 
-reencode = lambda s: s.encode('ascii', 'xmlcharrefreplace').decode()
+def reencode(s):
+    """Reencodes a string using xmlcharrefreplace."""
+    return s.encode('ascii', 'xmlcharrefreplace').decode()
 
 
 def slice_replace(word, sl, repl):
