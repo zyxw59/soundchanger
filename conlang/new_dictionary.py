@@ -139,15 +139,19 @@ class DictionaryMethods(object):
                 at. Characters not in the dict will be sorted at position -1.
                 Characters or sequences of characters to be ignored in sorting
                 (for example, combining diacritics) should be assigned to a
-                value of None. Defaults to standard string ordering.
+                value of None. Defaults to self.alpha, or if that is None,
+                standard string ordering.
 
         Returns:
             A sorted DictionaryView.
         """
         if field == 'word' and order is None:
             order = self.alpha
-        indices = sorted(range(len(self)),
-                         key=lambda x: self[x].order_key(field, order))
+        if order is None:
+            indices = sorted(range(len(self)), key=lambda x: self[x][field])
+        else:
+            indices = sorted(range(len(self)),
+                             key=lambda x: self[x].order_key(field, order))
         return DictionaryView(self, indices)
 
     def to_JSON(self, filename, override=False):
@@ -256,13 +260,35 @@ class Dictionary(DictionaryMethods, collections.UserList):
 
         Args:
             filename: The path to the file to load from.
+
+        Returns:
+            A Dictionary.
         """
         with open(os.path.expanduser(filename), encoding='utf-8') as f:
             return json.load(f, object_hook=class_hook)
 
+    @classmethod
+    def from_text(cls, filename, alpha=None, pat=None, pat_args=None,
+                  auto_fields=None):
+        """Loads a Dictionary from a text file.
+
+        Args:
+            filename: The path to the file to load from.
+            alpha: (Optional) The alphabetical ordering for the Dictionary.
+                Defaults to standard string ordering.
+            pat: (Optional) The pattern to use when reading the file. Defaults
+                to the default behavior of entry_format.match.
+            pat_args: (Optional) The pattern arguments to use when reading the
+                file.  Defaults to the default behavior of entry_format.match.
+            auto_fields: (Optional) Fields to be automatically generated for
+                each Entry. Defaults to {}
+        """
+        with open(os.path.expanduser(filename), encoding='utf-8') as f:
+            return cls(f, alpha, pat, pat_args)
+
     def __add__(self, d):
         return type(self)(super().__add__(d), self.alpha, self.pat,
-                self.pat_args)
+                self.pat_args, self.auto_fields)
 
     def __getitem__(self, i):
         if isinstance(i, slice):
@@ -280,7 +306,9 @@ class Dictionary(DictionaryMethods, collections.UserList):
         return self.format_string()
 
     def append(self, entry):
-        super().append(Entry(entry, self))
+        e = Entry(entry, self)
+        if e:
+            super().append(Entry(entry, self))
 
     def sort(self, field='word', order=None):
         """Sorts the Dictionary in place.
@@ -338,7 +366,7 @@ class DictionaryView(DictionaryMethods, collections.MappingView,
         # Get these from the parent, but only if they haven't been set manually
         # __getattr__ is only called if attr isn't found normally in the object
         if attr in ['alpha', 'pat', 'pat_args', 'auto_fields']:
-            return self._mapping.__getattr__(attr)
+            return self._mapping.__getattribute__(attr)
         # If __getattr__ is being called, attr wasn't found, so if it's not one
         # of the above,
         raise AttributeError
@@ -508,7 +536,13 @@ def sort_key(alpha):
         A function, which when applied to a string, generates a sort key.
     """
     if not isinstance(alpha, dict):
-        alpha = {alpha[i]: i for i in range(len(alpha))}
+        # alpha *should* be a dict, but if passed a list or a string, treat it
+        # as an ordering
+        try:
+            alpha = {k: v for v, k in enumerate(alpha)}
+        except TypeError:
+            # alpha isn't iterable, and is therefore useless as a key
+            alpha = {}
     a = sorted(alpha.keys(), key=lambda x: -len(x))
 
     def key(word):
