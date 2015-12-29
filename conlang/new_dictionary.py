@@ -423,7 +423,7 @@ class Entry(collections.UserDict):
                 e = m.groupdict()
             else:
                 e = {}
-        super().__init__(e)
+        super().__init__({k: v for k, v in e.items() if v})
 
     def __contains__(self, key):
         return super().__contains__(key) or key in self.parent.auto_fields
