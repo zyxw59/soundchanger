@@ -28,7 +28,7 @@ def custom_encode(obj):
     elif isinstance(obj, Entry):
         return obj.data
     else:
-        raise TypeError("obj {} of type {}".format(obj, type(obj)))
+        raise TypeError("obj {!r} of type {}".format(obj, type(obj)))
 
 
 def class_hook(dct):
@@ -188,6 +188,10 @@ class DictionaryMethods(object):
             pat_args: The pattern arguments to use, using the format specified
                 in the entry_format module. Defaults to self.pat_args.
         """
+        if pat is None:
+            pat = self.pat
+        if pat_args is None:
+            pat_args = self.pat_args
         try:
             f = open(os.path.expanduser(filename), 'x', encoding='utf-8')
         except FileExistsError:

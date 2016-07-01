@@ -25,7 +25,9 @@ def cat_replace(m, cats):
     if c in cats:
         if not n:
             return '(' + '|'.join(cats[c]) + ')'
-        return '(?P<nc' + n + '_' + c + '>' + '|'.join(cats[c]) + ')'
+        return '(?P<nc{}_{}>{})'.format(n, c, '|'.join(sorted(cats[c],
+                                                              key=len,
+                                                              reverse=True)))
     return m.group(0)
 
 
@@ -205,6 +207,6 @@ def apply_alternate_rules(word, rules, cats):
         word is returned unchanged.
     """
     for rule in rules:
-        matches, cat_index = sound_changer.find_matches(word, rc, cats)
+        matches, cat_index = find_matches(word, rule, cats)
         if matches:
             return apply_to_matches(word, rule['to'], cats, matches, cat_index)

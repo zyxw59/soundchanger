@@ -61,7 +61,7 @@ def load_text_file(filename):
         starting with '//'.
     """
     with open(path.expanduser(filename), encoding='utf-8') as f:
-        return [l.strip('\n') for l in f if l.strip() and l[:1] != '//']
+        return [l.strip('\n') for l in f if l.strip() and not l.startswith('//')]
 
 
 def lf(filename):
