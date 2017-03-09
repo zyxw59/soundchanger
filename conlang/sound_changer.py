@@ -1,6 +1,8 @@
 import regex
 from soundchanger.conlang import workers
 
+regex.DEFAULT_VERSION = regex.VERSION1
+
 cat_matcher = regex.compile(r'\{(\d*):?(\w*)\}')
 
 
@@ -58,6 +60,35 @@ def to_cat_replace(m, cats, indices):
         return cats[c][indices['nc' + n]]
     return m.group(0)
 
+def compile_rule(rule, cats):
+    """Converts a rule into a regex pattern
+
+    Args:
+        rule: The rule to search for. Should be a dict with the following:
+                'from': The pattern to match.
+                'before': (Optional) The pattern to match before 'from'.
+                'unbefore': (Optional) The pattern to not match before 'from'.
+                'after': (Optional) The pattern to match after 'from'.
+                'unafter': (Optional) The patterrn to not match after 'from'.
+        cats: The dict of categories to use in matching.
+
+    Returns:
+        A regex pattern that will match where the rule applies.
+    """
+    pattern = ''
+    if 'before' in rule and rule['before'] != '':
+        pattern += '(?<=(?P<before>' + rule['before'] + '))'
+    if 'unbefore' in rule and rule['unbefore'] != '':
+        pattern += '(?<!' + rule['unbefore'] + ')'
+    pattern += '(?P<from>' + rule['from'] + ')'
+    if 'after' in rule and rule['after'] != '':
+        pattern += '(?=(?P<after>' + rule['after'] + '))'
+    if 'unafter' in rule and rule['unafter'] != '':
+        pattern += '(?!' + rule['unafter'] + ')'
+    # Next, replace all the categories in the pattern with real regex
+    pattern = cat_matcher.sub(lambda m: cat_replace(m, cats), pattern)
+    return pattern
+
 
 def find_matches(word, rule, cats):
     """Finds all matches of a rule in a word.
@@ -81,19 +112,8 @@ def find_matches(word, rule, cats):
         where n is the number of that category, and values corresponding to the
         index associated with that numbered category.
     """
-    # First, generate a regex pattern to search for:
-    pattern = ''
-    if 'before' in rule and rule['before'] != '':
-        pattern += '(?<=(?P<before>' + rule['before'] + '))'
-    if 'unbefore' in rule and rule['unbefore'] != '':
-        pattern += '(?<!' + rule['unbefore'] + ')'
-    pattern += '(?P<from>' + rule['from'] + ')'
-    if 'after' in rule and rule['after'] != '':
-        pattern += '(?=(?P<after>' + rule['after'] + '))'
-    if 'unafter' in rule and rule['unafter'] != '':
-        pattern += '(?!' + rule['unafter'] + ')'
-    # Next, replace all the categories in the pattern with real regex
-    pattern = cat_matcher.sub(lambda m: cat_replace(m, cats), pattern)
+    # First, generate a regex pattern to search for
+    pattern = compile_rule(rule, cats)
     # Now pattern is a valid regex
     matches = []
     cat_index = []
@@ -141,7 +161,11 @@ def numbered_categories(m, cats):
                     # a previous number/category pair had a different index
                     raise ValueError()
             else:
-                indices[n] = cats[c].index(captures[nc][0])
+                idx = [i for i, item in enumerate(cats[c])
+                        if regex.match('^{}$'.format(item), captures[nc][0])]
+                if not idx:
+                    raise ValueError()
+                indices[n] = idx[0]
     return indices
 
 

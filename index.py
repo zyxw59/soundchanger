@@ -30,8 +30,8 @@ def main():
           '<script>\n'
           "files = ['" + "', '".join(files) + "'];\n"
           "fs = ['" + "', '".join(fs) + "'];\n"
-          'num_files = files.length;\n'
-          'num_pairs = 0;\n'
+          'numFiles = files.length;\n'
+          'numPairs = 0;\n'
           '</script>\n'
           '<link rel="stylesheet" media="screen and (min-device-width: 800px)" href="main.css" />\n'
           '<link rel="stylesheet" media="screen and (max-device-width: 800px)" href="phone.css" />\n'
@@ -67,8 +67,8 @@ def main():
         f, s = files[i], fs[i]
         print('<option value="' + f + '">' + s + '</option>')
     print('</select></div></form>\n'
-          '<input type="button" value="+" onclick="add_menu()" />\n'
-          '<input type="button" value="-" onclick="remove_menu()" />\n'
+          '<input type="button" value="+" onclick="addMenu()" />\n'
+          '<input type="button" value="-" onclick="removeMenu()" />\n'
           '</div>\n'
           '<div class="content">\n'
           '<iframe name="app" seamless></iframe>\n'

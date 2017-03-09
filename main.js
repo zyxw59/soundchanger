@@ -4,8 +4,8 @@ function addMenu() {
   div = document.getElementById('pair-' + n);
   div2 = div.cloneNode(true);
   div2.id = 'pair-' + (n + 1);
-  s = div2.childNodes[0]
-  e = div2.childNodes[1]
+  s = div2.children[0]
+  e = div2.children[1]
   s.id = 'start-' + (n + 1);
   s.name = s.id;
   e.id = 'end-' + (n + 1);

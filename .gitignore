@@ -1,0 +1,10 @@
+chars.txt
+data/
+files/
+*.pyc
+*/__pycache__/
+.pypath
+specifics.py
+gmp/*.txt
+gmp/*.html
+gmp/*.sh
