@@ -1,8 +1,9 @@
 import collections
+import itertools
 import os
 import json
 import regex
-from soundchanger.conlang import entry_format, sound_changer
+from soundchanger.conlang import cache, entry_format, sound_changer
 
 
 def custom_encode(obj):
@@ -12,23 +13,21 @@ def custom_encode(obj):
         obj: The Dictionary or Entry object to be encoded
 
     Returns:
-        A dict with one entry. It's key is '__Dictionary__' for a Dictionary,
-        or '__Entry__' for an Entry.
-        For a Dictionary, the entry's value is:
-        [list(obj), obj.alpha, obj.pat, obj.pat_args].
-        For an Entry, the entry's value is:
-        [obj.items(), obj.pat, obj.pat_args].
+        For a Dictionary, a dict with one entry, whose key is '__Dictionary__',
+        and whose value is [list(obj), obj.alpha, obj.pat, obj.pat_args,
+        obj.auto_fields]. For an Entry, obj.data.
 
     Raises:
-        TypeError: obj not of type Dictionary or Entry."""
-    if isinstance(obj, Dictionary):
-        key = '__{!s}__'.format(obj.__class__.__name__)
-        return {key: [list(obj), obj.alpha, obj.pat, obj.pat_args]}
+        TypeError: obj not of type Dictionary or Entry.
+    """
+    if isinstance(obj, DictionaryMethods):
+        key = '__Dictionary__'
+        return {key: [list(obj), obj.alpha, obj.pat, obj.pat_args,
+                      obj.auto_fields]}
     elif isinstance(obj, Entry):
-        key = '__{!s}__'.format(obj.__class__.__name__)
-        return {key: [obj.items(), obj.pat, obj.pat_args]}
+        return obj.data
     else:
-        raise TypeError("obj {} of type {}".format(obj, type(obj)))
+        raise TypeError("obj {!r} of type {}".format(obj, type(obj)))
 
 
 def class_hook(dct):
@@ -38,103 +37,20 @@ def class_hook(dct):
         dct: The dict generated from the JSON
 
     Returns:
-        If dct has one entry, whose key is either '__Dictionary__' or
-        '__Entry__', the Dictionary or Entry encoded by the JSON, or dct
-        otherwise."""
+        If dct has one entry, whose key is '__Dictionary__' the Dictionary
+        encoded by the JSON, or dct otherwise."""
     if len(dct) == 1:
         class_name, value = next(iter(dct.items()))
         class_name = class_name.strip('_')
         if class_name == 'Dictionary':
             return Dictionary(*value)
-        elif class_name == 'Entry':
-            return Entry(*value)
     return dct
 
 
-class Dictionary(collections.UserList):
-    """A dictionary containing entries in a conlang.
+class DictionaryMethods(object):
+    """Methods for a Dictionary.
 
-    Attributes:
-        alpha: The default alphabetical ordering to use when sorting on the
-            'word' field. It should be a dict, with key/value pairs
-            corresponding to characters or sequences of characters, and the
-            order they should be sorted at. Characters not in alpha will be
-            sorted at position -1. Characters or sequences of characters to be
-            ignored in sorting (for example, combining diacritics) should be
-            assigned to a value of None.
-        pat: The default pattern to use when printing the Dictionary, using
-            the format specified in the entry_format module.
-        pat_args: The default pattern arguments to use when printing the
-            Dictionary, using the format specified in the entry_format module.
     """
-
-    def __init__(self, l=None, alpha=None, pat=None, pat_args={}):
-        """Initializes a Dictionary with a list.
-
-        Args:
-            l: The list of Entries to initialize the Dictionary with. Defaults
-                to an empty list.
-            alpha: The alphabetical ordering for the Dictionary.
-            pat: The default pattern for printing the Dictionary.
-            pat_args: The default pattern arguments for printing the
-                Dictionary.
-        """
-        if l is None:
-            l = []
-        self.alpha = alpha
-        self.pat = pat
-        self.pat_args = pat_args
-        super().__init__()
-        for e in l:
-            self.append(Entry(e, pat, pat_args))
-
-    @classmethod
-    def from_JSON(cls, filename):
-        """Loads a Dictionary from a JSON file.
-
-        Args:
-            filename: The path to the file to load from.
-        """
-        with open(os.path.expanduser(filename), encoding='utf-8') as f:
-            return json.load(f, object_hook=class_hook)
-
-    def __add__(self, d):
-        return type(self)(super().__add__(d), self.alpha, self.pat,
-                self.pat_args)
-
-    def __getitem__(self, i):
-        if isinstance(i, slice):
-            return type(self)(super().__getitem__(i),
-                    self.alpha, self.pat, self.pat_args)
-        elif isinstance(i, str):
-            return StringList(self, i)
-        elif isinstance(i, tuple):
-            return type(self)([e[i] for e in self], self.alpha, self.pat,
-                    self.pat_args)
-        else:
-            return super().__getitem__(i)
-
-    def __mul__(self, n):
-        return type(self)(super().__mul__(n), self.alpha, self.pat,
-                self.pat_args)
-
-    def __setitem__(self, index, data):
-        if isinstance(index, str):
-            # data is a list of strings, and index is a field
-            for e in range(len(self)):
-                self[e][index] = data[e]
-        else:
-            # index is int or slice
-            super().__setitem__(index, data)
-
-    def __str__(self):
-        return self.format_string()
-
-    def append(self, entry):
-        if isinstance(entry, Entry):
-            super().append(entry)
-        else:
-            super().append(Entry(entry, pat=self.pat, pat_args=self.pat_args))
 
     def apply_rule_list(self, lines, field1='pron', field2=None):
         """Applies a list of sound change rules.
@@ -151,14 +67,14 @@ class Dictionary(collections.UserList):
         if field2 is None:
             field2 = field1
         for e in self:
-            # sound_changer.apply_rule_list returns a tuple of the word and the
-            # debug lines, but we only want the word
-            e[field2] = sound_changer.apply_rule_list(e[field1], lines)[0]
+            # sound_changer.apply_rule_list returns a tuple of the word and
+            # the debug lines, but we only want the word
+            e[field2] = sound_changer.apply_rule_list(e[field1], lines)
 
     def apply_rule_files(self, pairs, field1='pron', field2=None):
         """Applies a set of sound change files.
 
-        Applies the specified sound change files specified by pairs (as in
+        Applies the set of sound change files specified by pairs (as in
         sound_changer.apply_rule_files) to each Entry in the Dictionary.
 
         Args:
@@ -174,11 +90,9 @@ class Dictionary(collections.UserList):
         if field2 is None:
             field2 = field1
         for e in self:
-            # sound_changer.apply_rule_files returns a tuple of the word and
-            # the debug lines, but we only want the word
-            e[field2] = sound_changer.apply_rule_files(e[field1], pairs)[0]
+            e[field2] = self.cache(e[field1], pairs)[0]
 
-    def format_string(self, pat=None, pat_args={}):
+    def format_string(self, pat=None, pat_args=None):
         """Formats the Dictionary using a specified pattern.
 
         Args:
@@ -193,7 +107,7 @@ class Dictionary(collections.UserList):
         """
         if pat is None:
             pat = self.pat
-            if pat_args == {}:
+            if pat_args is None:
                 pat_args = self.pat_args
         return '\n'.join(e.format_string(pat, pat_args) for e in self)
 
@@ -208,17 +122,13 @@ class Dictionary(collections.UserList):
                 change rule syntax.
 
         Returns:
-            A Dictionary containing all the Entries that match the string.
+            A DictionaryView containing all the Entries that match the string.
         """
-        out = type(self)(alpha=self.alpha, pat=self.pat,
-                         pat_args=self.pat_args)
-        for e in self:
-            if e.check(s, field, cats):
-                out.append(e)
-        return out
+        indices = (i for i, v in enumerate(self) if v.check(s, field, cats))
+        return DictionaryView(self, indices)
 
-    def sort(self, field='word', order=None):
-        """Sorts the Dictionary.
+    def sorted(self, field='word', order=None):
+        """Returns a sorted view of the Dictionary.
 
         Args:
             field: The field to sort on. Defaults to 'word'
@@ -228,34 +138,20 @@ class Dictionary(collections.UserList):
                 at. Characters not in the dict will be sorted at position -1.
                 Characters or sequences of characters to be ignored in sorting
                 (for example, combining diacritics) should be assigned to a
-                value of None. Defaults to standard string ordering.
+                value of None. Defaults to self.alpha, or if that is None,
+                standard string ordering.
+
+        Returns:
+            A sorted DictionaryView.
         """
         if field == 'word' and order is None:
             order = self.alpha
-        self.data = sorted(self, key=lambda x: x.order_key(field, order))
-
-    def standardize(self, fields, pat=None, pat_args=None):
-        """Standardizes the order of fields in Entries.
-
-        Uniformly orders the fields of each Entry. If a field is not present in
-        an Entry, it's value will be set to ''. Additionally, the pat and
-        pat_args attributes of each Entry will be set.
-
-        Args:
-            fields: The ordering of fields to use.
-            pat: The format pattern for printing. Defaults to self.pat
-            pat_args: The pattern arguments for printing. Defaults to
-                self.pat_args.
-        """
-        if pat is None:
-            pat = self.pat
-        if pat_args is None:
-            pat_args = self.pat_args
-        for i in range(len(self)):
-            e = Entry(pat=pat, pat_args=pat_args)
-            for f in fields:
-                e[f] = self[i].get(f, '')
-            self[i] = e
+        if order is None:
+            indices = sorted(range(len(self)), key=lambda x: self[x][field])
+        else:
+            indices = sorted(range(len(self)),
+                             key=lambda x: self[x].order_key(field, order))
+        return DictionaryView(self, indices)
 
     def to_JSON(self, filename, override=False):
         """Saves the dictionary to the specified file.
@@ -278,7 +174,7 @@ class Dictionary(collections.UserList):
             json.dump(self, f, default=custom_encode)
             f.close()
 
-    def to_text(self, filename, override=False, pat=None, pat_args={}):
+    def to_text(self, filename, override=False, pat=None, pat_args=None):
         """Saves the dictionary as text using the specified format.
 
         Args:
@@ -291,6 +187,10 @@ class Dictionary(collections.UserList):
             pat_args: The pattern arguments to use, using the format specified
                 in the entry_format module. Defaults to self.pat_args.
         """
+        if pat is None:
+            pat = self.pat
+        if pat_args is None:
+            pat_args = self.pat_args
         try:
             f = open(os.path.expanduser(filename), 'x', encoding='utf-8')
         except FileExistsError:
@@ -304,98 +204,241 @@ class Dictionary(collections.UserList):
             f.close()
 
 
-class Entry(collections.UserList):
+class Dictionary(DictionaryMethods, collections.UserList):
+    """A dictionary containing entries in a conlang.
+
+    Attributes:
+        alpha: The default alphabetical ordering to use when sorting on the
+            'word' field. It should be a dict, with key/value pairs
+            corresponding to characters or sequences of characters, and the
+            order they should be sorted at. Characters not in alpha will be
+            sorted at position -1. Characters or sequences of characters to be
+            ignored in sorting (for example, combining diacritics) should be
+            assigned to a value of None.
+        pat: The default pattern to use when printing the Dictionary, using
+            the format specified in the entry_format module.
+        pat_args: The default pattern arguments to use when printing the
+            Dictionary, using the format specified in the entry_format module.
+        auto_fields: Fields to be automatically generated for each Entry.
+            A dict whose keys are the fields to be automatically generated, and
+            whose values are tuples of the field from which it is generated,
+            and a tuple that can be passed to
+            sound_changer.apply_rule_files.
+    """
+
+    def __init__(self, l=None, alpha=None, pat=None, pat_args=None,
+                 auto_fields=None):
+        """Initializes a Dictionary with a list.
+
+        Args:
+            l: The list of Entries to initialize the Dictionary with. Defaults
+                to an empty list.
+            alpha: The alphabetical ordering for the Dictionary.
+            pat: The default pattern for printing the Dictionary.
+            pat_args: The default pattern arguments for printing the
+                Dictionary.
+            auto_fields: Fields to be automatically generated for each Entry.
+                Should be a dict whose keys are the fields to be automatically
+                generated, and whose values are tuples of the field from which
+                it is generated, and a tuple that can be passed to
+                sound_changer.apply_rule_files.
+        """
+        if l is None:
+            l = []
+        self.alpha = alpha
+        self.pat = pat
+        self.pat_args = pat_args
+        self.auto_fields = auto_fields or {}
+        for f in self.auto_fields:
+            pairs = self.auto_fields[f][1]
+            self.auto_fields[f][1] = tuple(tuple(p) for p in pairs)
+        self.cache = sound_changer.SoundChangeCache()
+        super().__init__()
+        for e in l:
+            self.append(e)
+
+    @classmethod
+    def from_JSON(cls, filename):
+        """Loads a Dictionary from a JSON file.
+
+        Args:
+            filename: The path to the file to load from.
+
+        Returns:
+            A Dictionary.
+        """
+        with open(os.path.expanduser(filename), encoding='utf-8') as f:
+            return json.load(f, object_hook=class_hook)
+
+    @classmethod
+    def from_text(cls, filename, alpha=None, pat=None, pat_args=None,
+                  auto_fields=None):
+        """Loads a Dictionary from a text file.
+
+        Args:
+            filename: The path to the file to load from.
+            alpha: (Optional) The alphabetical ordering for the Dictionary.
+                Defaults to standard string ordering.
+            pat: (Optional) The pattern to use when reading the file. Defaults
+                to the default behavior of entry_format.match.
+            pat_args: (Optional) The pattern arguments to use when reading the
+                file.  Defaults to the default behavior of entry_format.match.
+            auto_fields: (Optional) Fields to be automatically generated for
+                each Entry. Defaults to {}
+        """
+        with open(os.path.expanduser(filename), encoding='utf-8') as f:
+            return cls(f, alpha, pat, pat_args)
+
+    def __add__(self, d):
+        return type(self)(super().__add__(d), self.alpha, self.pat,
+                self.pat_args, self.auto_fields)
+
+    def __getitem__(self, i):
+        if isinstance(i, slice):
+            return DictionaryView(self, i)
+        return super().__getitem__(i)
+
+    def __mul__(self, n):
+        return type(self)(super().__mul__(n), self.alpha, self.pat,
+                self.pat_args)
+
+    def __setitem__(self, index, data):
+        super().__setitem__(index, data)
+
+    def __str__(self):
+        return self.format_string()
+
+    def append(self, entry):
+        e = Entry(entry, self)
+        if e:
+            super().append(Entry(entry, self))
+
+    def sort(self, field='word', order=None):
+        """Sorts the Dictionary in place.
+
+        Args:
+            field: The field to sort on. Defaults to 'word'
+            order: The order function or dict to sort by. If it is a dict,
+                it should have key/value pairs corresponding to characters or
+                sequences of characters, and the order they should be sorted
+                at. Characters not in the dict will be sorted at position -1.
+                Characters or sequences of characters to be ignored in sorting
+                (for example, combining diacritics) should be assigned to a
+                value of None. Defaults to standard string ordering.
+        """
+        self.data = list(self.sorted(field, order))
+
+
+class DictionaryView(DictionaryMethods, collections.MappingView,
+                     collections.Set):
+    """A view of a Dictionary.
+
+    """
+
+    def __init__(self, parent, selection):
+        """Initializes a DictionaryView
+
+        Args:
+            parent: The Dicitonary or DictionaryView to be viewed.
+            selection: The selection of the Dictionary to view. Either a slice
+                or an iterable that generates indices to include in the view.
+        """
+        super().__init__(parent)
+        if isinstance(selection, slice):
+            self.selection = range(*selection.indices(len(parent)))
+        else:
+            # convert selection to a list for three reasons:
+            # 1: defined length
+            # 2: subscriptable
+            # 3: doesn't run out
+            self.selection = list(selection)
+
+    @classmethod
+    def _from_iterable(cls, it):
+        if isinstance(it, cls):
+            it = it.selection
+        return set(it)
+
+    def __contains__(self, item):
+        for e in self:
+            if e == item:
+                return True
+        return False
+
+    def __getattr__(self, attr):
+        # Get these from the parent, but only if they haven't been set manually
+        # __getattr__ is only called if attr isn't found normally in the object
+        if attr in ['alpha', 'pat', 'pat_args', 'auto_fields']:
+            return self._mapping.__getattribute__(attr)
+        # If __getattr__ is being called, attr wasn't found, so if it's not one
+        # of the above,
+        raise AttributeError
+
+    def __getitem__(self, i):
+        if isinstance(i, slice):
+            # deal with slice - we need to generate another DictionaryView
+            # self.selection is either a range or a list, so it is
+            # subscriptable
+            return type(self)(self._mapping, self.selection[i])
+        # deal with plain integers. again, self.selection is guaranteed to be
+        # subscriptable
+        return self._mapping[self.selection[i]]
+
+    def __iter__(self):
+        return (self._mapping[i] for i in self.selection)
+
+    def __len__(self):
+        return len(self.selection)
+
+    def __repr__(self):
+        return 'DictionaryView({!r}, {!r})'.format(self._mapping,
+                                                   self.selection)
+
+    def __str__(self):
+        return '\n'.join(str(e) for e in self)
+
+
+class Entry(collections.UserDict):
     """A dictionary entry.
 
     Attributes:
-        pat: The default pattern to use when printing the Entry, using
-            the format specified in the entry_format module.
-        pat_args: The default pattern arguments to use when printing the
-            Entry, using the format specified in the entry_format module.
+        parent: The Dictionary it is an entry in.
     """
 
-    def __init__(self, e=None, pat=None, pat_args={}):
+    def __init__(self, e=None, parent=None):
+        """Initializes an Entry.
+
+        Args:
+            e: A dict or str to initialize the Entry with. If a str, it is
+                converted to an Entry using parent.pat and parent.pat_args.
+                Otherwise, it is initialized as if e was passed to dict().
+                Defaults to {}.
+            parent: The Dictionary that contains the Entry. Defaults to a new,
+                empty Dictionary.
+        """
+        self.parent = Dictionary() if parent is None else parent
         if e is None:
-            e = []
-        if pat is None:
-            self.pat = r'$word$pron$pos$cl$de'
-            if pat_args == {}:
-                self.pat_args = {
-                    'pron': '/$pron/',
-                    'pos': ' - $pos',
-                    'cl': ' ($cl$subcl)',
-                    'subcl': '.$subcl',
-                    'de': ': $de'
-                }
-            else:
-                self.pat_args = pat_args
-        else:
-            self.pat = pat
-            self.pat_args = pat_args
-        try:
-            matcher = entry_format.match(self.pat, self.pat_args)
+            e = {}
+        if isinstance(e, str):
+            matcher = entry_format.match(self.parent.pat, self.parent.pat_args)
             m = matcher.match(e)
             if m is not None:
                 e = m.groupdict()
-                for f in self.pat_args:
-                    if '?P<' + f + '>' not in matcher.pattern:
-                        e[f] = self.pat_args[f]
             else:
                 e = {}
-        except TypeError:
-            pass
-        try:
-            super().__init__(e.items())
-        except AttributeError:
-            super().__init__(e)
-        self.lookup = dict(self.data)
+        super().__init__({k: v for k, v in e.items() if v})
 
-    def __add__(self, e):
-        try:
-            return Entry(super().__add__(e.items()), self.pat, self.pat_args)
-        except AttributeError:
-            return Entry(super().__add__(e), self.pat, self.pat_args)
+    def __contains__(self, key):
+        return super().__contains__(key) or key in self.parent.auto_fields
 
-    def __contains__(self, i):
-        return i in self.lookup
-
-    def __delitem__(self, i):
-        try:
-            del self.data[i]
-        except TypeError:
-            del self.data[self.keys().index(i)]
-        self.lookup = dict(self.data)
-
-    def __getitem__(self, i):
-        try:
-            if isinstance(i, slice):
-                return Entry(super().__getitem__(i), self.pat, self.pat_args)
-            else:
-                return super().__getitem__(i)
-        except TypeError:
-            if isinstance(i, str):
-                return self.lookup[i]
-            else:
-                return Entry([(f, self.lookup[f]) for f in i if f in self],
-                        self.pat, self.pat_args)
+    def __getitem__(self, key):
+        if key in self.data:
+            return super().__getitem__(key)
+        src, pairs = self.parent.auto_fields[key]
+        return self.parent.cache(self[src], pairs)
 
     def __iter__(self):
-        return iter(self.keys())
-
-    def __repr__(self):
-        return '{' + ', '.join(repr(k) + ': ' + repr(v) for k, v in
-                self.items()) + '}'
-
-    def __setitem__(self, i, v):
-        try:
-            self.data[i] = v
-            self.lookup = dict(self.data)
-        except TypeError:
-            try:
-                self.data[self.keys().index(i)] = (i, v)
-            except ValueError:
-                self.data.append((i, v))
-            self.lookup[i] = v
+        yield from self.data.keys() | self.parent.auto_fields.keys()
 
     def __str__(self):
         return self.format_string()
@@ -410,21 +453,18 @@ class Entry(collections.UserList):
             cats: (Optional) The categories to use if searching using sound
                 change rule syntax.
         """
+        f = self[field]
         if cats is None:
-            if field in self and self[field] is not None:
-                return regex.search(s, self[field]) is not None
-            else:
-                return False
-        else:
-            try:
-                try:
-                    m = sound_changer.find_matches(self.lookup[field], s, cats)
-                except TypeError:
-                    s = sound_changer.parse_rule(s, cats)
-                    m = sound_changer.find_matches(self.lookup[field], s, cats)
-                return m[0] is not None
-            except KeyError:
-                return False
+            # treat s as plain regex
+            return regex.search(s, f) is not None
+        # s is a sound change rule
+        try:
+            # parse s
+            s = sound_changer.parse_rule(s, cats)
+        except AttributeError:
+            # s is a dict (i.e. already parsed)
+            pass
+        return bool(sound_changer.find_matches(f, s, cats)[0])
 
     def format_string(self, pat=None, pat_args={}):
         """Formats the Entry using a specified pattern.
@@ -440,19 +480,16 @@ class Entry(collections.UserList):
             The Entry formatted as a string.
         """
         if pat is None:
-            pat = self.pat
+            pat = self.parent.pat
             if pat_args == {}:
-                pat_args = self.pat_args
+                pat_args = self.parent.pat_args
         return entry_format.output(self, pat, pat_args)
 
     def get(self, key, default=None):
         return self[key] if key in self else default
 
     def items(self):
-        return self.data
-
-    def keys(self):
-        return [k for k, v in self.data]
+        yield from ((k, self[k]) for k in self)
 
     def order_key(self, field='word', order=None):
         """Returns a key to sort on.
@@ -478,48 +515,8 @@ class Entry(collections.UserList):
             except AttributeError:
                 return self[field]
 
-    def reorder_fields(self, fields):
-        """Reorders the fields of the Entry.
-
-        Args:
-            fields: The ordering of fields to use.
-        """
-        e = []
-        for f in fields:
-            e.append((f, self.get(f, '')))
-        self.data = e
-
-    def setdefault(self, key, default=None):
-        try:
-            return self[key]
-        except KeyError:
-            self[key] = default
-
     def values(self):
-        return [v for k, v in self.data]
-
-
-class StringList(collections.UserList):
-    """A single field in a Dictionary.
-
-    Represents a single field in a Dictionary as a list of strings. The nth
-    string is that field in the nth Entry of the Dictionary.
-
-    Attributes:
-        d: The Dictionary to which the Entries belong.
-        field: The field represented.
-    """
-
-    def __init__(self, d, field):
-        self.d = d
-        self.field = field
-        self.data = [e[field] for e in d if field in e]
-
-    def __delitem__(self, i):
-        del self.d[i][self.field]
-
-    def __setitem__(self, i, data):
-        self.d[i][self.field] = data
+        return (self[k] for k in self.keys())
 
 
 def sort_key(alpha):
@@ -542,7 +539,13 @@ def sort_key(alpha):
         A function, which when applied to a string, generates a sort key.
     """
     if not isinstance(alpha, dict):
-        alpha = {alpha[i]: i for i in range(len(alpha))}
+        # alpha *should* be a dict, but if passed a list or a string, treat it
+        # as an ordering
+        try:
+            alpha = {k: v for v, k in enumerate(alpha)}
+        except TypeError:
+            # alpha isn't iterable, and is therefore useless as a key
+            alpha = {}
     a = sorted(alpha.keys(), key=lambda x: -len(x))
 
     def key(word):
