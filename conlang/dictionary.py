@@ -2,7 +2,7 @@ import collections
 import os
 import json
 import regex
-from soundchanger.conlang import entry_format, sound_changer, sound_change_app
+from soundchanger.conlang import entry_format, sound_changer
 
 
 def custom_encode(obj):
@@ -151,15 +151,15 @@ class Dictionary(collections.UserList):
         if field2 is None:
             field2 = field1
         for e in self:
-            # sound_change_app.apply_rule_list returns a tuple of the word and the
+            # sound_changer.apply_rule_list returns a tuple of the word and the
             # debug lines, but we only want the word
-            e[field2] = sound_change_app.apply_rule_list(e[field1], lines)[0]
+            e[field2] = sound_changer.apply_rule_list(e[field1], lines)[0]
 
     def apply_rule_files(self, pairs, field1='pron', field2=None):
         """Applies a set of sound change files.
 
         Applies the specified sound change files specified by pairs (as in
-        sound_change_app.apply_rule_files) to each Entry in the Dictionary.
+        sound_changer.apply_rule_files) to each Entry in the Dictionary.
 
         Args:
             pairs: The sequence of sound change files to apply. For each pair,
@@ -174,9 +174,9 @@ class Dictionary(collections.UserList):
         if field2 is None:
             field2 = field1
         for e in self:
-            # sound_change_app.apply_rule_files returns a tuple of the word and
+            # sound_changer.apply_rule_files returns a tuple of the word and
             # the debug lines, but we only want the word
-            e[field2] = sound_change_app.apply_rule_files(e[field1], pairs)[0]
+            e[field2] = sound_changer.apply_rule_files(e[field1], pairs)[0]
 
     def format_string(self, pat=None, pat_args={}):
         """Formats the Dictionary using a specified pattern.
@@ -420,7 +420,7 @@ class Entry(collections.UserList):
                 try:
                     m = sound_changer.find_matches(self.lookup[field], s, cats)
                 except TypeError:
-                    s = sound_change_app.parse_rule(s, cats)
+                    s = sound_changer.parse_rule(s, cats)
                     m = sound_changer.find_matches(self.lookup[field], s, cats)
                 return m[0] is not None
             except KeyError:

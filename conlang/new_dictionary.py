@@ -3,8 +3,7 @@ import itertools
 import os
 import json
 import regex
-from soundchanger.conlang import (cache, entry_format, sound_changer,
-                                  sound_change_app)
+from soundchanger.conlang import cache, entry_format, sound_changer
 
 
 def custom_encode(obj):
@@ -68,15 +67,15 @@ class DictionaryMethods(object):
         if field2 is None:
             field2 = field1
         for e in self:
-            # sound_change_app.apply_rule_list returns a tuple of the word and
+            # sound_changer.apply_rule_list returns a tuple of the word and
             # the debug lines, but we only want the word
-            e[field2] = sound_change_app.apply_rule_list(e[field1], lines)
+            e[field2] = sound_changer.apply_rule_list(e[field1], lines)
 
     def apply_rule_files(self, pairs, field1='pron', field2=None):
         """Applies a set of sound change files.
 
         Applies the set of sound change files specified by pairs (as in
-        sound_change_app.apply_rule_files) to each Entry in the Dictionary.
+        sound_changer.apply_rule_files) to each Entry in the Dictionary.
 
         Args:
             pairs: The sequence of sound change files to apply. For each pair,
@@ -224,7 +223,7 @@ class Dictionary(DictionaryMethods, collections.UserList):
             A dict whose keys are the fields to be automatically generated, and
             whose values are tuples of the field from which it is generated,
             and a tuple that can be passed to
-            sound_change_app.apply_rule_files.
+            sound_changer.apply_rule_files.
     """
 
     def __init__(self, l=None, alpha=None, pat=None, pat_args=None,
@@ -242,7 +241,7 @@ class Dictionary(DictionaryMethods, collections.UserList):
                 Should be a dict whose keys are the fields to be automatically
                 generated, and whose values are tuples of the field from which
                 it is generated, and a tuple that can be passed to
-                sound_change_app.apply_rule_files.
+                sound_changer.apply_rule_files.
         """
         if l is None:
             l = []
@@ -253,7 +252,7 @@ class Dictionary(DictionaryMethods, collections.UserList):
         for f in self.auto_fields:
             pairs = self.auto_fields[f][1]
             self.auto_fields[f][1] = tuple(tuple(p) for p in pairs)
-        self.cache = sound_change_app.SoundChangeCache()
+        self.cache = sound_changer.SoundChangeCache()
         super().__init__()
         for e in l:
             self.append(e)
@@ -461,7 +460,7 @@ class Entry(collections.UserDict):
         # s is a sound change rule
         try:
             # parse s
-            s = sound_change_app.parse_rule(s, cats)
+            s = sound_changer.parse_rule(s, cats)
         except AttributeError:
             # s is a dict (i.e. already parsed)
             pass

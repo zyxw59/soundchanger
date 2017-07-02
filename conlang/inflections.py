@@ -1,5 +1,5 @@
 import collections
-from soundchanger.conlang import sound_change_app
+from soundchanger.conlang import sound_changer
 
 class DotDict(dict):
     """A nested dict whose entries can be accessed using keys with '.'
@@ -220,7 +220,7 @@ class InflectionRule(list):
             word = entry[self.field]
         except TypeError:
             word = entry
-        return sound_change_app.apply_rule_list(word, rules)[0]
+        return sound_changer.apply_rule_list(word, rules)[0]
 
     def __getattr__(self, attr):
         if attr == 'field':

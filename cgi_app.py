@@ -5,7 +5,7 @@ import cgi
 import cgitb
 import os
 import sys
-from soundchanger.conlang import sound_change_app, workers
+from soundchanger.conlang import sound_changer, workers
 
 
 FILE_PATH = os.path.abspath(os.path.dirname(sys.argv[0]))
@@ -78,7 +78,7 @@ def main():
                 word = input()
             except (KeyboardInterrupt, EOFError):
                 break
-        word, db = sound_change_app.apply_rule_files(word, pairs, debug)
+        word, db = sound_changer.apply_rule_files(word, pairs, debug)
         if html:
             print('<pre>')
         print(word)
