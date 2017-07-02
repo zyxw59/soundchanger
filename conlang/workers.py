@@ -1,9 +1,10 @@
 from os import path
 import sys
+import pathlib
 from soundchanger.conlang import cache
 
-FILE_PATH = os.path.abspath(os.path.dirname(sys.argv[0]))
-
+# relative paths!
+FILE_PATH = pathlib.Path(__file__).absolute().parents[1]
 
 def add_pad(l, n, item):
     """Adds an item to a list at an index, padding the list if necessary.
