@@ -3,6 +3,7 @@ data/
 files/
 *.pyc
 */__pycache__/
+files
 .pypath
 specifics.py
 gmp/*.txt

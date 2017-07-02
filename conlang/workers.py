@@ -2,7 +2,7 @@ from os import path
 import sys
 from soundchanger.conlang import cache
 
-FILE_PATH = '/mit/sashacf/web_scripts/soundchanger'
+FILE_PATH = os.path.abspath(os.path.dirname(sys.argv[0]))
 
 
 def add_pad(l, n, item):
