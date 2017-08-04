@@ -18,7 +18,7 @@ def main():
     fs = ['.' * f.count('.') + ('.' + f).rsplit('.', 1)[1] for f in files]
 
     with open('chars.txt', encoding='utf-8') as cf:
-        chars = [l.split(' ') for l in cf.read().split('\n')]
+        chars = [l.rstrip().split() for l in cf]
 
     print('<!DOCTYPE html>'
           '<html>\n'
