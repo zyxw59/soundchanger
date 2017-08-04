@@ -43,7 +43,7 @@ def main():
           '<form id="main" action="cgi_app.py" target="app">\n'
           '<input id="word" name="word" class="form-control"/>\n'
           '<select id="debug" name="debug">')
-    for i in range(4):
+    for i in range(3):
         print('<option value="' + str(i) + '">' + str(i) + '</option>')
     print('</select>\n'
           '<input type="submit" value="apply" />\n'
