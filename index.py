@@ -14,7 +14,7 @@ def main():
     print('Content-Type: text/html')
     print('')
 
-    files = sorted([' '] + os.listdir(path.join(workers.FILE_PATH, 'files')))
+    files = sorted([' '] + [f for f in os.listdir(path.join(workers.FILE_PATH, 'files')) if not f.startswith('.')])
     fs = ['.' * f.count('.') + ('.' + f).rsplit('.', 1)[1] for f in files]
 
     with open('chars.txt', encoding='utf-8') as cf:
